@@ -5,7 +5,7 @@
 <dependency>
     <groupId>com.fhtiger.utils</groupId>
     <artifactId>simple-helper-utils</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-RELEASE</version>
 </dependency>
 ```
 

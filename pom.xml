@@ -6,8 +6,7 @@
 
     <groupId>com.fhtiger.utils</groupId>
     <artifactId>simple-helper-utils</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-<!--    <version>0.0.1-RELEASE</version>-->
+    <version>0.0.1-RELEASE</version>
     <description>Useful Utilities(Based on Luo Gang's `Javy Helper`)</description>
     <name>simple-helper-utils</name>
     <url>https://github.com/ghostFlyTiger/simple-helper-utils</url>
