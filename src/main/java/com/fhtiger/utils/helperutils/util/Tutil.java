@@ -40,6 +40,9 @@ public class Tutil {
 		Tutil._flag = _flag;
 	}
 
+	/**
+	 * @return
+	 */
 	@SuppressWarnings("unused")
 	private static boolean check() {
 		return (Tutil.use_flag || Tutil._flag);
@@ -47,6 +50,7 @@ public class Tutil {
 
 	/**
 	 * 有值(错误信息)打印方法
+	 * @param v 打印参数
 	 */
 	public static void consoleErr(Object v) {
 		if (!check()) return;
@@ -55,6 +59,8 @@ public class Tutil {
 
 	/**
 	 * 多值打印,制表符隔开
+	 * @param v1 打印参数1
+	 * @param v2 其它打印参数
 	 */
 	public static void consoleErr(Object v1, Object... v2) {
 		if (!check()) return;
@@ -68,6 +74,7 @@ public class Tutil {
 
 	/**
 	 * 有值打印方法
+	 * @param v 打印参数
 	 */
 	public static void consoleOut(Object v) {
 		if (!check()) return;
@@ -80,6 +87,7 @@ public class Tutil {
 
 	/**
 	 * 有值打印(collection)方法
+	 * @param v 打印集合参数
 	 */
 	public static void consoleOut(Collection<?> v) {
 		if (!check()) return;
@@ -96,6 +104,8 @@ public class Tutil {
 
 	/**
 	 * 多值打印,制表符隔开
+	 * @param v1 打印参数1
+	 * @param v2 其它打印参数
 	 */
 	public static void consoleOut(Object v1, Object... v2) {
 		if (!check()) return;
@@ -109,6 +119,7 @@ public class Tutil {
 
 	/**
 	 * 遍历数组
+	 * @param v 打印参数
 	 */
 	public static void consoleOut(Object[] v) {
 		if (!check()) return;
@@ -122,6 +133,8 @@ public class Tutil {
 
 	/**
 	 * 遍历数组,以指定字符串分隔
+	 * @param v 打印参数1
+	 * @param r 分隔符
 	 */
 	public static void consoleOut(Object[] v, String r) {
 		if (!check()) return;
@@ -135,6 +148,8 @@ public class Tutil {
 
 	/**
 	 * 遍历数组,追加数字标记
+	 * @param v 打印参数
+	 * @param j 追加标记起始
 	 */
 	public static void consoleOut(Object[] v, int j) {
 		if (!check()) return;
@@ -158,29 +173,36 @@ public class Tutil {
 		return strDate(type, getNowDate(type));
 	}
 
-	public static Date getNowDate(DateType... type) {
+	/**
+	 * @param type {@link DateType}
+	 * @return {@link Date}
+	 */
+	public static Date getNowDate(DateType type) {
 		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat(DateType.A.getValue());
 		SimpleDateFormat tsdf = null;
 		String cdate = null;
 		Date now = null;
 		try {
-			if (type.length > 0) {
-				DateType DT = type[0];
-				tsdf = DT.getLocale() != null ? new SimpleDateFormat(DT.getValue(), DT.getLocale()) : new SimpleDateFormat(DT.getValue());
+			if (type!=null) {
+				tsdf = type.getLocale() != null ? new SimpleDateFormat(type.getValue(), type.getLocale()) : new SimpleDateFormat(
+						type.getValue());
 
 				cdate = tsdf.format(cal.getTime());
 				now = tsdf.parse(cdate);
 
 			} else {
-				tsdf = sdf;
+				tsdf = new SimpleDateFormat(DateType.A.getValue());
 				cdate = tsdf.format(cal.getTime());
 				now = tsdf.parse(cdate);
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (Exception ignored) {
+
 		}
 		return now;
+	}
+
+	public static Date getNowDate(){
+		return getNowDate(null);
 	}
 
 	/**
@@ -199,6 +221,7 @@ public class Tutil {
 	 * 创建新日期格式(指定国际化)
 	 *
 	 * @param sdf 格式化字符串
+	 * @param locale {@link Locale}
 	 * @return SimpleDateFormat
 	 * @author LFH
 	 * @since 2017年11月2日 上午9:37:46
@@ -230,6 +253,7 @@ public class Tutil {
 	 * 将字符串以指定格式转化为日期(指定国际化)
 	 *
 	 * @param sdf 格式化字符串
+	 * @param locale {@link Locale}
 	 * @param date 字符串日期
 	 * @return {@link Date}
 	 * @author LFH
@@ -306,7 +330,7 @@ public class Tutil {
 	 *
 	 * @param filePath 文件路径
 	 * @param sets 文件内容
-	 * @throws IOException {@link IOException}
+	 * @throws IOException io异常 {@link IOException}
 	 * @author LFH
 	 * @since 2017年12月9日 上午9:40:11
 	 */
