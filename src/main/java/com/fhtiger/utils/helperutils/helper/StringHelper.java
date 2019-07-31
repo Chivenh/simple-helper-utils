@@ -138,6 +138,7 @@ public class StringHelper {
 	/**
 	 * 计算字符串的字节长度.
 	 * 
+	 * @param value 字符串
 	 * @return int
 	 * @see String#getBytes()
 	 */

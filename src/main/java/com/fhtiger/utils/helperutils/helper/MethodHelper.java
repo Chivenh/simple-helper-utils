@@ -122,6 +122,7 @@ public class MethodHelper {
 	 * 执行对象的close方法
 	 * 
 	 * @param o {@link Closeable}
+	 * @param <T> {@link Closeable}
 	 */
 	public static <T extends  Closeable> void close(T o) {
 		try {
