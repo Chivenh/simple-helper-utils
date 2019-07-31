@@ -20,7 +20,7 @@ public class Wrappers {
 	 * 
 	 * @param entity 实体
 	 * @return T
-	 * @param <T> T
+	 *
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T instantiate(T entity) {
@@ -33,7 +33,7 @@ public class Wrappers {
 	 * 
 	 * @param list C
 	 * @return C
-	 * @param <C> C
+	 *
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <C extends Collection<?>> C instantiateList(C list) {
@@ -72,7 +72,7 @@ public class Wrappers {
 	 * 
 	 * @param map C
 	 * @return C
-	 * @param <C> C
+	 *
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <C extends Map<?, ?>> C instantiateMap(C map) {
@@ -111,7 +111,7 @@ public class Wrappers {
 	 *
 	 * @param arr 源数组
 	 * @return 复制后的数组
-	 * @param <T> T
+	 *
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T copyArray(T arr) {
@@ -126,7 +126,7 @@ public class Wrappers {
 	 *
 	 * @param list 源集合
 	 * @return 复制后的集合
-	 * @param <T> T
+	 *
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static <T extends Collection> T copyList(T list) {
@@ -140,7 +140,7 @@ public class Wrappers {
 	 *
 	 * @param map 源Map
 	 * @return 复制后的Map
-	 * @param <T> T
+	 *
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static <T extends Map> T copyMap(T map) {
