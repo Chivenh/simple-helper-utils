@@ -476,6 +476,7 @@ public class NumberHelper {
 	 * 
 	 * @param a 数字a
 	 * @param b 数字b
+	 * @param <T> {@link Number}
 	 * @return min
 	 */
 	@SuppressWarnings("unchecked")
@@ -492,6 +493,7 @@ public class NumberHelper {
 	 * 
 	 * @param a 数字a
 	 * @param b 数字b
+	 * @param  <T> {@link Number}
 	 * @return max
 	 */
 	@SuppressWarnings("unchecked")

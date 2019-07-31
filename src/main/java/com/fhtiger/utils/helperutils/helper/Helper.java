@@ -523,7 +523,7 @@ public class Helper {
 	 * @param propertyName 属性名
 	 * @param annotationClass 注解class属性
 	 * @return 注解对象
-	 * @param <T> 泛型约束
+	 * @param <T> {@link Annotation}
 	 */
 	public static <T extends Annotation> T getAnnotation(Class<?> cls, String propertyName, Class<T> annotationClass) {
 		PropertyDescriptor pd = Helper.getPropertyDescriptor(cls, propertyName);
@@ -538,7 +538,7 @@ public class Helper {
 	 * @param pd 				属性名
 	 * @param annotationClass 注解class属性
 	 * @return 注解
-	 * @param <T> 泛型约束
+	 * @param <T> {@link Annotation}
 	 */
 	public static <T extends Annotation> T getAnnotation(Class<?> cls, PropertyDescriptor pd,
 			Class<T> annotationClass) {

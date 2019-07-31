@@ -15,6 +15,7 @@ public interface JsonDeserializer {
 	 * 
 	 * @param json json字符串
 	 * @param type 返回的数据类型,可以为List,Map,或实体类
+	 * @param <T> T
 	 * @return T
 	 */
 	 <T> T deserialize(String json, Class<T> type);
