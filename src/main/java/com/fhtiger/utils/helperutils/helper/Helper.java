@@ -226,7 +226,7 @@ public class Helper {
 	 * @param obj    对象
 	 * @param values Map/POJO对象,应该是一个{}类型的JSON数据
 	 * @return obj
-	 *
+	 * @param <T> 返回对象
 	 */
 	public static <T> T setValues(T obj, Object values) {
 		if (obj == null) return obj;
@@ -353,7 +353,7 @@ public class Helper {
 	 * @param source 源对象
 	 * @param ignoreProperties 不需要包含的属性
 	 * @return 结果对象
-	 *
+	 * @param <T> 泛型约束
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T copy(T source, String... ignoreProperties) {
@@ -367,7 +367,7 @@ public class Helper {
 	 * @param ignoreProperties 忽略属性
 	 * @return 结果对象
 	 * @see #isBasicClass(Class)
-	 *
+	 * @param <T> 泛型约束
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T copyBasic(T source, String... ignoreProperties) {
@@ -381,7 +381,7 @@ public class Helper {
 	 * @param target 目标对象
 	 * @param ignoreProperties 忽略属性
 	 * @return 结果对象
-	 *
+	 * @param <T> 泛型约束
 	 */
 	public static <T> T copyBasicTo(Object source, T target, String... ignoreProperties) {
 		return Helper.copyTo(source, target, true, true, ignoreProperties, (String[]) null);
@@ -394,7 +394,7 @@ public class Helper {
 	 * @param target			目标对象
 	 * @param ignoreProperties 忽略属性
 	 * @return 目标对象
-	 *
+	 * @param <T> 泛型约束
 	 */
 	public static <T> T copyTo(Object source, T target, String... ignoreProperties) {
 		return Helper.copyTo(source, target, true, ignoreProperties, (String[]) null);
@@ -409,7 +409,7 @@ public class Helper {
 	 * @param ignoreProperties 不需要复制的属性
 	 * @param properties 要复制的属性
 	 * @return 目标对象
-	 *
+	 * @param <T> 泛型约束
 	 */
 	public static <T> T copyTo(Object source, T target, boolean includeNull, String[] ignoreProperties,
 			String... properties) {
@@ -427,7 +427,7 @@ public class Helper {
 	 * @param properties 要复制的属性
 	 * @return 目标对象
 	 * @see #isBasicClass(Class)
-	 *
+	 * @param <T> 泛型约束
 	 */
 	public static <T> T copyTo(Object source, T target, boolean includeNull, boolean basicOnly,
 			String[] ignoreProperties, String... properties) {
@@ -523,7 +523,7 @@ public class Helper {
 	 * @param propertyName 属性名
 	 * @param annotationClass 注解class属性
 	 * @return 注解对象
-	 *
+	 * @param <T> 泛型约束
 	 */
 	public static <T extends Annotation> T getAnnotation(Class<?> cls, String propertyName, Class<T> annotationClass) {
 		PropertyDescriptor pd = Helper.getPropertyDescriptor(cls, propertyName);
@@ -538,7 +538,7 @@ public class Helper {
 	 * @param pd 				属性名
 	 * @param annotationClass 注解class属性
 	 * @return 注解
-	 *
+	 * @param <T> 泛型约束
 	 */
 	public static <T extends Annotation> T getAnnotation(Class<?> cls, PropertyDescriptor pd,
 			Class<T> annotationClass) {
@@ -608,7 +608,7 @@ public class Helper {
 	 * @param c 集合对象
 	 * @param values 数组
 	 * @return 增加的数据个数
-	 *
+	 * @param <V> V
 	 */
 	public static <V> int add(Collection<V> c, V[] values) {
 		if (Helper.isEmpty(values)) return 0;
@@ -625,7 +625,7 @@ public class Helper {
 	 * @param c        集合
 	 * @param iterator 迭代器
 	 * @return 增加数据的个数
-	 *
+	 * @param <V> V
 	 */
 	public static <V> int add(Collection<V> c, Iterator<V> iterator) {
 		if (iterator == null) return 0;
@@ -643,7 +643,7 @@ public class Helper {
 	 * @param iterable 可迭代对象
 	 * @return int 增加的数据个数
 	 * @see #add(Collection, Iterator)
-	 *
+	 * @param <V> V
 	 */
 	public static <V> int add(Collection<V> c, Iterable<V> iterable) {
 		if (iterable == null) return 0;
@@ -700,7 +700,7 @@ public class Helper {
 	 * @param map 数据
 	 * @param type 要实例化的Class类型
 	 * @return 结果对象
-	 *
+	 * @param <T> 泛型约束
 	 */
 	public static <T> T toObject(Map<?, ?> map, Class<T> type) {
 		return Helper.setValues((T) BeanUtils.instantiateClass(type), map);
