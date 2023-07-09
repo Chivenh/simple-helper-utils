@@ -3,15 +3,18 @@
 
 ```$xml
 <dependency>
-    <groupId>com.fhtiger.utils</groupId>
+    <groupId>com.fhtiger.helper.utils</groupId>
     <artifactId>simple-helper-utils</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 </dependency>
 ```
 
-# com.fhtiger.utils.helperutils
-## helper
-## idgenerator
-## json
-## util
-## wrapper
+# com.fhtiger.helper.utils
+## - helpful
+### -- AssertDetect
+### -- CodeGeneratorHelper
+### -- CustomThreadFactory
+### -- HelpfulExecutors
+### -- QueryDetect
+### -- QueryDetectConsumer
+### -- SimpleGarbleUtil
