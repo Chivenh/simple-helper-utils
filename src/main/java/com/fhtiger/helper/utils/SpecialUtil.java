@@ -19,9 +19,9 @@ import java.util.regex.Pattern;
  * @apiNote 专用调试与小工具类
  */
 @SuppressWarnings({ "unused" })
-public final class TUtil {
+public final class SpecialUtil {
 
-	private TUtil()  throws IllegalAccessException{
+	private SpecialUtil()  throws IllegalAccessException{
 		throw new IllegalAccessException("The util-class do not need to be instantiated");
 	}
 
@@ -32,11 +32,11 @@ public final class TUtil {
 	private static volatile boolean ENABLE_FLAG = true;
 
 	public static void setEnableFlag(boolean enableFlag) {
-		TUtil.ENABLE_FLAG = enableFlag;
+		SpecialUtil.ENABLE_FLAG = enableFlag;
 	}
 
 	private static boolean closed() {
-		return (!TUtil.ENABLE_FLAG);
+		return (!SpecialUtil.ENABLE_FLAG);
 	}
 
 	/**
@@ -434,7 +434,7 @@ public final class TUtil {
 	 * @return <code>true</code> if the String is not empty and not null
 	 */
 	public static boolean isNotEmpty(CharSequence str) {
-		return !TUtil.isEmpty(str);
+		return !SpecialUtil.isEmpty(str);
 	}
 
 	/**
@@ -482,7 +482,7 @@ public final class TUtil {
 	 * @since 2.0
 	 */
 	public static boolean isNotBlank(CharSequence str) {
-		return !TUtil.isBlank(str);
+		return !SpecialUtil.isBlank(str);
 	}
 
 	/**

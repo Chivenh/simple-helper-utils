@@ -1,7 +1,7 @@
 package com.fhtiger.helper.utils.optional;
 
 
-import com.fhtiger.helper.utils.TUtil;
+import com.fhtiger.helper.utils.SpecialUtil;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -33,7 +33,7 @@ public final class CharacterParamOptional<T extends CharSequence> {
 	}
 
 	public static <T extends CharSequence> CharacterParamOptional<T> ofEmptyAble(T value){
-		return TUtil.isEmpty(value) ? empty() : new CharacterParamOptional<>(value);
+		return SpecialUtil.isEmpty(value) ? empty() : new CharacterParamOptional<>(value);
 	}
 
 	/**
@@ -113,7 +113,7 @@ public final class CharacterParamOptional<T extends CharSequence> {
 	}
 
 	public boolean isNotEmpty(){
-		return TUtil.isNotEmpty(this.value);
+		return SpecialUtil.isNotEmpty(this.value);
 	}
 
 	public void ifNotEmpty(Consumer<? super T> consumer){
@@ -123,7 +123,7 @@ public final class CharacterParamOptional<T extends CharSequence> {
 	}
 
 	public static <T extends CharSequence> void valueConsumer(T value,Consumer<? super T> consumer){
-		if(TUtil.isNotEmpty(value)){
+		if(SpecialUtil.isNotEmpty(value)){
 			consumer.accept(value);
 		}
 	}

@@ -1,7 +1,7 @@
 package com.fhtiger.helper.utils.optional;
 
 
-import com.fhtiger.helper.utils.TUtil;
+import com.fhtiger.helper.utils.SpecialUtil;
 
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -173,7 +173,7 @@ public final class OptionalConsumer {
 	 * @param <T>   -
 	 */
 	public static <T extends CharSequence> OptionalValue<T> nonEmptyConsume(T value) {
-		return new OptionalValue<>(value, TUtil.isNotEmpty(value));
+		return new OptionalValue<>(value, SpecialUtil.isNotEmpty(value));
 	}
 
 	public static <E, T extends Collection<E>> OptionalValue<T> nonEmptyConsume(T value) {

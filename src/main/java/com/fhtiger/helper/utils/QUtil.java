@@ -124,7 +124,7 @@ public final class QUtil {
 	 * @return like
 	 */
 	public static String paramTrimLike(Object param) {
-		return "%" + TUtil.getStr(param).trim() + "%";
+		return "%" + SpecialUtil.getStr(param).trim() + "%";
 	}
 
 	/**

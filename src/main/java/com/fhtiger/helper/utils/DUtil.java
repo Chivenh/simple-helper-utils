@@ -462,7 +462,7 @@ public final class DUtil {
 		if (o == null) {
 			return null;
 		} else {
-			if (!TUtil.isNull(o)) {
+			if (!SpecialUtil.isNull(o)) {
 				type = type == null ? DateType.A : type;
 				return parseDate(createFormatter(type.value, type.locale), o.toString());
 			} else {

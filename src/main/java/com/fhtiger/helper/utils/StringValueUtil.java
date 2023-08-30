@@ -44,7 +44,7 @@ public final class StringValueUtil {
 	 * @return String
 	 */
 	public static String repeat(final CharSequence fragment,final CharSequence delimiter, final int times) {
-		if (TUtil.isEmpty(fragment)) {
+		if (SpecialUtil.isEmpty(fragment)) {
 			return "";
 		}
 		String[] result = new String[times];
@@ -61,7 +61,7 @@ public final class StringValueUtil {
 	 */
 	public static String truncated(final String value, final int size) {
 
-		if (TUtil.isNotEmpty(value)) {
+		if (SpecialUtil.isNotEmpty(value)) {
 			int sLength = value.length();
 
 			if (size > 0) {
@@ -88,7 +88,7 @@ public final class StringValueUtil {
 	 */
 	public static String fillIn(final String value, final char fillChar, final int size) {
 
-		if (TUtil.isNotEmpty(value)) {
+		if (SpecialUtil.isNotEmpty(value)) {
 			int sLength = value.length();
 
 			if (size > sLength) {
@@ -116,7 +116,7 @@ public final class StringValueUtil {
 	 */
 	public static <T> List<T> splitTo(final String value, final String splitChar, final Function<String, T> convert) {
 
-		if (TUtil.isNotEmpty(value)) {
+		if (SpecialUtil.isNotEmpty(value)) {
 			String[] values = value.split(splitChar);
 
 			List<T> results = new ArrayList<>(values.length);
@@ -142,7 +142,7 @@ public final class StringValueUtil {
 	 */
 	public static <T> List<T> splitBiTo(final String value, final String splitChar, final BiFunction<Integer, String, T> convert) {
 
-		if (TUtil.isNotEmpty(value)) {
+		if (SpecialUtil.isNotEmpty(value)) {
 			String[] values = value.split(splitChar);
 			int length = values.length;
 

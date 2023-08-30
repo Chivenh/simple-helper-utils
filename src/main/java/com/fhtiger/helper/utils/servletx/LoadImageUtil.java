@@ -1,7 +1,7 @@
 package com.fhtiger.helper.utils.servletx;
 
 
-import com.fhtiger.helper.utils.TUtil;
+import com.fhtiger.helper.utils.SpecialUtil;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -36,8 +36,8 @@ public final class LoadImageUtil {
 	 * @param path 文件路径
 	 */
 	public static void loadImageByPath(@NotNull HttpServletResponse response,@NotNull String path) {
-		if (response == null || TUtil.isNull(path)) {
-			TUtil.consoleErr("File Not Found!The Path is required!");
+		if (response == null || SpecialUtil.isNull(path)) {
+			SpecialUtil.consoleErr("File Not Found!The Path is required!");
 			return;
 		}
 		try (FileInputStream img = new FileInputStream(new File(path));
@@ -57,7 +57,7 @@ public final class LoadImageUtil {
 			outputStream.flush();
 
 		} catch (IOException e) {
-			TUtil.consoleErr(e.getMessage());
+			SpecialUtil.consoleErr(e.getMessage());
 		}
 	}
 
@@ -70,7 +70,7 @@ public final class LoadImageUtil {
 	public static void loadImgByFileAttrs(Map<String, String> attrs,@NotNull  HttpServletRequest request,
 			@NotNull HttpServletResponse response) {
 		if (attrs == null || attrs.isEmpty()) {
-			TUtil.consoleErr("File Not Found!");
+			SpecialUtil.consoleErr("File Not Found!");
 			try {
 				response.getWriter().write("Load image has got a file-not-found error!");
 			} catch (Exception e) {
@@ -82,9 +82,9 @@ public final class LoadImageUtil {
 		String basePath = attrs.get(BASEPATH);
 		String type = attrs.get(TYPE);
 		String realName = attrs.get(REALNAME);
-		String dlString = TUtil.getStr(attrs.get(DOWNLOAD));
+		String dlString = SpecialUtil.getStr(attrs.get(DOWNLOAD));
 		try (ServletOutputStream outputStream = response.getOutputStream()) {
-			boolean downLoad = TUtil.isNull(dlString) ? false : Boolean.valueOf(attrs.get(DOWNLOAD));
+			boolean downLoad = SpecialUtil.isNull(dlString) ? false : Boolean.valueOf(attrs.get(DOWNLOAD));
 			try {
 				img = new FileInputStream(new File(path));
 			} catch (Exception e) {
@@ -110,7 +110,7 @@ public final class LoadImageUtil {
 			}
 			outputStream.flush();
 		} catch (Exception e) {
-			TUtil.consoleErr(e.getMessage());
+			SpecialUtil.consoleErr(e.getMessage());
 		}
 	}
 }
