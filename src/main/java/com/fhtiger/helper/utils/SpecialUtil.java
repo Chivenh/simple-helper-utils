@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
- * @author LFH:
+ * @author Chivenh:
  * @version lfh.1.0
  * @since 完善日期2017-4-13 时间11:23:02
  * @apiNote 专用调试与小工具类
@@ -147,7 +147,7 @@ public final class SpecialUtil {
 	 * @param filePath 文件地址
 	 * @param sets json字符串
 	 * @throws IOException -
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2017年12月9日 上午9:40:11
 	 */
 	public static void writeFile(String filePath, String sets) throws IOException {
@@ -166,7 +166,7 @@ public final class SpecialUtil {
 	 *
 	 * @param index 数字
 	 * @return String
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2017年12月11日 下午3:39:17
 	 */
 	public static String getBigNumber(int index) {
@@ -180,7 +180,7 @@ public final class SpecialUtil {
 	/**
 	 * @param obj 对象
 	 * @return String
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2017年4月21日 下午1:11:53
 	 * @apiNote 通用toString()方法.
 	 */
@@ -339,7 +339,7 @@ public final class SpecialUtil {
 	 * @param v1 必填参数1
 	 * @param v2 可选参数列表2
 	 * @return 和
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2020-04-26 15:42
 	 */
 	public Object getSum(String v1, String... v2) {
@@ -489,7 +489,7 @@ public final class SpecialUtil {
 	 * 调用序列化方法，深克隆一个对象副本
 	 * @param preObj 前置对象
 	 * @return 结果对象
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2020-04-26 15:30
 	 */
 	@SuppressWarnings("unchecked")
@@ -567,7 +567,7 @@ public final class SpecialUtil {
 	 * @param pre 前置对象
 	 * @param cur 当前对象
 	 * @return 当前对象
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2020-04-26 15:28
 	 */
 	public static <T> T copyProps(T pre, T cur) {
@@ -606,7 +606,7 @@ public final class SpecialUtil {
 	 *
 	 * @param obj 对象
 	 * @return {@link Map} 对应对象属性名和值
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2020-04-26 15:27
 	 */
 	public static Map<String, Object> objToMap(Object obj) {
@@ -648,7 +648,7 @@ public final class SpecialUtil {
 	 * @param type Class
 	 * @param map Map
 	 * @return 结果对象
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2017年5月31日 下午3:07:43
 	 * @see .反之Object转Map 有方法:
 	 * @see #objToMap(Object)

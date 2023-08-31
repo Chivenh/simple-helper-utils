@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
  * DUtil
  * 日期相关工具
  *
- * @author LFH
+ * @author Chivenh
  * @since 2020年04月26日 15:24
  */
 @SuppressWarnings({ "unused" })
@@ -343,7 +343,7 @@ public final class DUtil {
 	/**
 	 * @param type {@link DateType}
 	 * @return 日期字符串
-	 * @author LFH
+	 * @author Chivenh
 	 * @apiNote 获取当前时间[yyyy-MM-dd]
 	 * @since 2017年4月24日 上午10:27:40
 	 */
@@ -373,7 +373,7 @@ public final class DUtil {
 	 * @param sdf  格式化字符串
 	 * @param date 日期字符串
 	 * @return {@link Date}
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2017年12月9日 上午8:51:11
 	 */
 	public static Date getDate(String sdf, String date) {
@@ -386,7 +386,7 @@ public final class DUtil {
 	 * @param sdf  格式化字符串
 	 * @param date 日期字符串
 	 * @return {@link Date}
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2017年12月9日 上午8:51:11
 	 */
 	public static Date getDate(String sdf, Locale locale, String date) {
@@ -399,7 +399,7 @@ public final class DUtil {
 	 * @param sdf  日期字符串 {@link DateType}
 	 * @param date {@link Date}
 	 * @return 字符串日期
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2017年11月2日 上午11:23:31
 	 */
 	public static String strDate(DateType sdf, Date date) {
@@ -455,7 +455,7 @@ public final class DUtil {
 	 * @param o    参数对象
 	 * @param type {}
 	 * @return {@link Date}
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2017年4月25日 下午5:36:05
 	 */
 	public static Date getDate(Object o, DateType type) {
@@ -517,7 +517,7 @@ public final class DUtil {
 	/**
 	 * 转换日期类型
 	 *
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2018年2月28日
 	 */
 	public static final class DateType {

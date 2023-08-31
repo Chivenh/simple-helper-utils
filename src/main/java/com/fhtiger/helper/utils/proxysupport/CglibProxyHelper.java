@@ -6,7 +6,7 @@ import org.springframework.cglib.proxy.Enhancer;
  * CglibProxyHelper
  * 基于Cglib的代理工具
  *
- * @author LFH
+ * @author Chivenh
  * @since 2021年01月29日 12:55
  */
 @SuppressWarnings({ "unused", "WeakerAccess" })

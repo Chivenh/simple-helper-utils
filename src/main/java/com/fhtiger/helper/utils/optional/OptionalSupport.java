@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 /**
  * OptionalSupport
  * 对Optional的扩展支持
- * @author LFH
+ * @author Chivenh
  * @since 2020年07月31日 16:38
  */
 @SuppressWarnings({ "unused" })

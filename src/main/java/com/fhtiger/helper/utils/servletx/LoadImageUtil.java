@@ -16,7 +16,7 @@ import java.util.function.Function;
 /**
  * 加载图片
  * 
- * @author LFH
+ * @author Chivenh
  * @version 1.0.0
  * @since 2020-04-26 15:14
  */
@@ -30,7 +30,7 @@ public final class LoadImageUtil {
 	/**
 	 * 根据路径返回图像到response.
 	 * 
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2017年9月22日 上午8:45:55
 	 * @param response 响应对象
 	 * @param path 文件路径

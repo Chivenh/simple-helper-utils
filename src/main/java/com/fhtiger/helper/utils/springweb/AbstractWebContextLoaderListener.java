@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  * 增加对Environment参数的扩展追加
  * 使用 {@link WebEnvs} 注解来注入需要加载的属性文件列表
  * 项目中继承本类，并添加 {@link WebEnvs} 注解，之后替换 web.xml中的 `org.springframework.web.context.ContextLoaderListener`
- * @author LFH
+ * @author Chivenh
  * @since 2020年12月01日 10:43
  */
 @SuppressWarnings({ "unused" })

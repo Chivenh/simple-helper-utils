@@ -6,7 +6,7 @@ import java.io.IOException;
 /**
  * CustomFilter
  * 模仿 {@link Filter} 接口，以自定义过滤器，并在注册bean时避免被自动注册到servletContext中，以保持扩展属性功能。
- * @author LFH
+ * @author Chivenh
  * @since 2021年01月28日 09:01
  */
 @SuppressWarnings({ "unused" })

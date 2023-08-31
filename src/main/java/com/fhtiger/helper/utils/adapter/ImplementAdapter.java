@@ -9,12 +9,15 @@ import java.util.Vector;
 /**
  * ImplementAdapter
  *
- * @author LFH
+ * @author Chivenh
  * @since 2020年08月04日 15:15
  */
 @SuppressWarnings({ "unused" })
 
 public class ImplementAdapter {
+
+	private ImplementAdapter() {
+	}
 
 	public static  <T> List<Class<T>> getAllImplements(Class<T> interfaceClass){
 		ClassLoader classLoader = interfaceClass.getClassLoader();

@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  *     <li>1.在过滤器参数中使用exurl，使用正则表达式标记使用缓存的文件或目录</li>
  *     <li>2.在前端请求路径中添加cache=true参数，标记此资源请求使用缓存</li>
  * </ul>
- * @author LFH
+ * @author Chivenh
  * @since 2020-05-18 12:00
  */
 @SuppressWarnings({"unused"})

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * WebEnvs
  * 标记需要加载为web中environment 参数的属性文件
- * @author LFH
+ * @author Chivenh
  * @since 2020年12月11日 09:03
  */
 @SuppressWarnings({ "unused" })

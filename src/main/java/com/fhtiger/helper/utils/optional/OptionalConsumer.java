@@ -13,7 +13,7 @@ import java.util.function.Predicate;
  * OptionalConsumer
  * 常用Optional的消费方法
  *
- * @author LFH
+ * @author Chivenh
  * @since 2020年05月16日 14:53
  */
 @SuppressWarnings({ "unused" })

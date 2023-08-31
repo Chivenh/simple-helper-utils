@@ -13,7 +13,7 @@ import org.springframework.web.util.JavaScriptUtils;
 /**
  * SimpleGarbleUtil
  *
- * @author LFH
+ * @author Chivenh
  * @since 2021年05月18日 11:56
  */
 @SuppressWarnings({ "unused","WeakerAccess", "UnnecessaryLocalVariable" })

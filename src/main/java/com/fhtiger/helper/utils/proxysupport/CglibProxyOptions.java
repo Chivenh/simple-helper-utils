@@ -12,7 +12,7 @@ import java.util.Optional;
  * CglibProxyOptions
  * 提供给{@link CglibProxyHelper#getProxy(Class, CglibProxyOptions)} 来生成代理类的参数对象
  *
- * @author LFH
+ * @author Chivenh
  * @since 2021年01月29日 12:59
  */
 @SuppressWarnings({ "unused" })

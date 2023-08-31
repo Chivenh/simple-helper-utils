@@ -10,7 +10,7 @@ import java.util.*;
  * QUtil
  * 查询相关工具
  *
- * @author LFH
+ * @author Chivenh
  * @since 2020年04月30日 09:24
  */
 @SuppressWarnings({ "unused", "WeakerAccess" })
@@ -26,7 +26,7 @@ public final class QUtil {
 	 *
 	 * @param request {@link HttpServletRequest}
 	 * @return String
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2020-04-30 9:26
 	 */
 	public static String getOrderStr(HttpServletRequest request) {
@@ -69,7 +69,7 @@ public final class QUtil {
 	 * @param request {@link HttpServletRequest}
 	 * @param keys    取值键
 	 * @return &lt;Key,Value&gt;数据
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2020-04-30 9:27
 	 */
 	public static Map<String, String> entryKeys(HttpServletRequest request, String... keys) {
@@ -90,7 +90,7 @@ public final class QUtil {
 	 * @param field  匹配的字段名
 	 * @param sep    分割大小
 	 * @return ID拼装SQL
-	 * @author LFH
+	 * @author Chivenh
 	 * @since 2020-04-30 9:27
 	 */
 	public static String entryIds(String field, int length, int sep) {

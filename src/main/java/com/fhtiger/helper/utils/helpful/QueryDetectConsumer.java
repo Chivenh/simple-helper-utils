@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 /**
  * QueryDetectConsumer
  *
- * @author LFH
+ * @author Chivenh
  * @apiNote When convert the value to null,The queryDetect will call voidAppend to only append the conditionStr and without param.
  * @created 2021年06月29日 10:22
  */

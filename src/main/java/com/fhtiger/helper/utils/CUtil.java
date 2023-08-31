@@ -8,7 +8,7 @@ import java.util.function.Function;
  * CUtil
  * {@link java.util.Collection}容器的便捷创建工厂类
  *
- * @author LFH
+ * @author Chivenh
  * @created 2023年05月19日 16:55
  */
 @SuppressWarnings({ "unused", "AlibabaClassNamingShouldBeCamel" })

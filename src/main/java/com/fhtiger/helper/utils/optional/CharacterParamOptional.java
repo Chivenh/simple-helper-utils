@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 /**
  * CharacterParamOptional
  *
- * @author LFH
+ * @author Chivenh
  * @since 2020年04月07日 19:22
  */
 public final class CharacterParamOptional<T extends CharSequence> {

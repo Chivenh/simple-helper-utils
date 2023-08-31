@@ -10,7 +10,7 @@ import java.util.function.Predicate;
  * SplitAdapter
  * 使用适配器模式来定义一组可分隔数据的操作工具
  *
- * @author LFH
+ * @author Chivenh
  * @since 2020年07月22日 14:29
  */
 @SuppressWarnings({ "unused", "rawtypes" })

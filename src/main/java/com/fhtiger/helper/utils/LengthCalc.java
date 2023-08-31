@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 /**
  * 计算字符串实际数据长度的方法枚举
- * @author LFH
+ * @author Chivenh
  * @since 2020-07-10 10:56
  */
 public class LengthCalc {

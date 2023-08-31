@@ -5,7 +5,7 @@ import java.util.Optional;
 /**
  * RestSupportProperties
  * 三方服务调用相关配置
- * @author LFH
+ * @author Chivenh
  * @since 2021年02月04日 08:59
  */
 @SuppressWarnings({ "unused" })

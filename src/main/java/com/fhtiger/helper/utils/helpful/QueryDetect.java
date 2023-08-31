@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  * QueryDetect
  * 查询中的各条件检测与注入,非线程安全类
  *
- * @author LFH
+ * @author Chivenh
  * @created 2021年06月29日 10:07
  */
 @SuppressWarnings({ "unused" })

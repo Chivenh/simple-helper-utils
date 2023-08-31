@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 
 /**
  * 自定义线程工具类
- * @author LFH
+ * @author Chivenh
  */
 public class CustomThreadFactory implements ThreadFactory {
 	private static final AtomicInteger POOL_NUMBER = new AtomicInteger(1);

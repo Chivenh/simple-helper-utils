@@ -4,7 +4,7 @@ package com.fhtiger.helper.utils;
  * SimpleResult
  * 简单返回值对象
  * 
- * @author LFH
+ * @author Chivenh
  * @since 2020年04月26日 14:46
  */
 @SuppressWarnings({ "unused","WeakerAccess" })

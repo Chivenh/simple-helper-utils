@@ -7,7 +7,7 @@ import org.springframework.util.Assert;
 /**
  * AssertUtil
  *
- * @author LFH
+ * @author Chivenh
  * @since 2021年02月20日 14:08
  */
 @SuppressWarnings({ "unused" })

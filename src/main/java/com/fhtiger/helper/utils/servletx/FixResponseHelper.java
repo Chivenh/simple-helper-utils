@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * FixResponseHelper
  * 处理响应 {@link HttpServletResponse}
- * @author LFH
+ * @author Chivenh
  * @since 2020年04月26日 14:01
  */
 @SuppressWarnings({ "unused","WeakerAccess" })

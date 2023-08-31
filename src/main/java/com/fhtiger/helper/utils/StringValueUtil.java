@@ -11,7 +11,7 @@ import java.util.function.Function;
  * StringValueUtil
  * 字符串相关操作工具方法
  *
- * @author LFH
+ * @author Chivenh
  * @since 2020年07月21日 15:07
  */
 @SuppressWarnings({ "unused", "WeakerAccess" })

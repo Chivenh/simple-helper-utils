@@ -9,7 +9,7 @@ import java.util.function.Function;
 /**
  * 输出名生成器
  *
- * @author LFH
+ * @author Chivenh
  * @since 2020年04月17日 19:22
  */
 @SuppressWarnings({"unused"})

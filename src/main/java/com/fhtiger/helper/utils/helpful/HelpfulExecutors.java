@@ -7,7 +7,7 @@ import java.util.concurrent.*;
  * HelpfulExecutors
  * 扩展{@link Executors}功能，对一些非安全初始化进行安全的初始化简化
  *
- * @author LFH
+ * @author Chivenh
  * @created 2022年08月18日 17:20
  * @see Executors
  */

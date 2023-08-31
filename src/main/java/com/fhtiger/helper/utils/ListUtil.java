@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * ListUtil
  * List操作相关工具方法
  *
- * @author LFH
+ * @author Chivenh
  * @since 2020年07月22日 10:58
  */
 @SuppressWarnings({ "unused" })
