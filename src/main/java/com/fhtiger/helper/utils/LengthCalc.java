@@ -1,6 +1,7 @@
 package com.fhtiger.helper.utils;
 
 import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
 /**
  * 计算字符串实际数据长度的方法枚举
@@ -23,7 +24,7 @@ public class LengthCalc {
 	 */
 	private static final String DOUBLE_CHARS_REGEX = "[^\\x00-\\xff]";
 
-	public static final Function<String, Integer> CHINESE_FUNCTION = data -> {
+	public static final ToIntFunction<String> CHINESE_FUNCTION = data -> {
 		int chineseChars = 0;
 
 		int dataLength = data.length();
@@ -41,7 +42,7 @@ public class LengthCalc {
 		return dataLength + chineseChars;
 	};
 
-	public static final Function<String, Integer> DOUBLE_CHARS_FUNCTION = data -> {
+	public static final ToIntFunction<String> DOUBLE_CHARS_FUNCTION = data -> {
 		return data.replaceAll(DOUBLE_CHARS_REGEX, "**").length();
 	};
 }

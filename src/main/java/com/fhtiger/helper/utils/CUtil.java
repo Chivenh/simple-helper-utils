@@ -2,7 +2,7 @@ package com.fhtiger.helper.utils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
+import java.util.function.IntFunction;
 
 /**
  * CUtil
@@ -39,7 +39,7 @@ public final class CUtil {
 	 * @param <V>     Value
 	 * @return Map
 	 */
-	public static <K, V> Map<K, V> newMap(int size, Function<Integer, Map<K, V>> creator) {
+	public static <K, V> Map<K, V> newMap(int size, IntFunction<Map<K, V>> creator) {
 		int initialCapacity = size < 1 ? 0 : size / 3 * 4;
 		return creator.apply(initialCapacity);
 	}
