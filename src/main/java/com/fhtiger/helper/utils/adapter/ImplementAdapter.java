@@ -1,8 +1,11 @@
 package com.fhtiger.helper.utils.adapter;
 
+import com.fhtiger.helper.utils.helpful.SimpleRuntimeException;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -30,7 +33,7 @@ public class ImplementAdapter {
 			field = ClassLoader.class.getDeclaredField("classes");
 			field.setAccessible(true);
 		} catch (NoSuchFieldException e) {
-			throw new RuntimeException(
+			throw new SimpleRuntimeException(
 					"无法获取到当前线程的类加载器的classes域!");
 		}
 
@@ -48,6 +51,6 @@ public class ImplementAdapter {
 			e.printStackTrace();
 		}
 
-		return null;
+		return Collections.emptyList();
 	}
 }

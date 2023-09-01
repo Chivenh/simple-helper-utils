@@ -4,6 +4,7 @@ import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.function.BooleanSupplier;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -49,7 +50,7 @@ public final class QueryDetect {
 	public <T> QueryDetectConsumer<T> detect(T value, Predicate<T> test) {
 		this.checkEnd();
 
-		return new QueryDetectConsumer<T>(this, value, test.test(value));
+		return new QueryDetectConsumer<>(this, value, test.test(value));
 	}
 
 	<T> void append(T value, String conditionalStr) {
@@ -137,9 +138,9 @@ public final class QueryDetect {
 		this.params = null;
 	}
 
-	private void end(Supplier<Boolean> doing) {
+	private void end(BooleanSupplier doing) {
 		this.checkEnd();
-		doing.get();
+		doing.getAsBoolean();
 		this.end();
 	}
 }

@@ -1,5 +1,7 @@
 package com.fhtiger.helper.utils.adapter;
 
+import com.fhtiger.helper.utils.helpful.SimpleRuntimeException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -104,7 +106,7 @@ public enum SplitAdapter {
 		Class<?> valueClass = value.getClass();
 
 		if (!this.ableSplit.test(valueClass)) {
-			throw new RuntimeException(valueClass.getName() + ",不支持此分隔操作!");
+			throw new SimpleRuntimeException(valueClass.getName() + ",不支持此分隔操作!");
 		}
 		return splitBySize((SplitHandler<E>) this.splitHandler, value, size);
 	}
@@ -123,7 +125,7 @@ public enum SplitAdapter {
 		Class<?> valueClass = value.getClass();
 
 		if (!this.ableSplit.test(valueClass)) {
-			throw new RuntimeException(valueClass.getName() + ",不支持此分隔操作!");
+			throw new SimpleRuntimeException(valueClass.getName() + ",不支持此分隔操作!");
 		}
 		return splitByRooms((SplitHandler<E>) this.splitHandler, value, roomSize);
 	}
@@ -281,7 +283,7 @@ public enum SplitAdapter {
 
 		if (adapter == null) {
 
-			throw new RuntimeException(valueClass.getName() + ",不支持此分隔操作!");
+			throw new SimpleRuntimeException(valueClass.getName() + ",不支持此分隔操作!");
 		}
 
 		SplitHandler<E> splitHandler = (SplitHandler<E>) adapter.splitHandler;
@@ -306,7 +308,7 @@ public enum SplitAdapter {
 
 		if (adapter == null) {
 
-			throw new RuntimeException(valueClass.getName() + ",不支持此分隔操作!");
+			throw new SimpleRuntimeException(valueClass.getName() + ",不支持此分隔操作!");
 		}
 
 		SplitHandler<E> splitHandler = (SplitHandler<E>) adapter.splitHandler;
