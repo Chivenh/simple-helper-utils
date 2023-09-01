@@ -60,7 +60,7 @@ public final class OptionalConsumer {
 	}
 
 	public static <E, T extends Collection<E>> void nonEmptyConsume(T value, Consumer<T> consumer) {
-		if (value != null && value.size() > 0) {
+		if (value != null && !value.isEmpty()) {
 			consumer.accept(value);
 		}
 	}
@@ -177,7 +177,7 @@ public final class OptionalConsumer {
 	}
 
 	public static <E, T extends Collection<E>> OptionalValue<T> nonEmptyConsume(T value) {
-		return new OptionalValue<>(value, value != null && value.size() > 0);
+		return new OptionalValue<>(value, value != null && !value.isEmpty());
 	}
 
 	/**

@@ -13,6 +13,7 @@ import java.util.function.Supplier;
  * @author Chivenh
  * @since 2020年04月07日 19:22
  */
+@SuppressWarnings("unused")
 public final class CharacterParamOptional<T extends CharSequence> {
 
 	private static final CharacterParamOptional<?> EMPTY = new CharacterParamOptional<>();
@@ -110,6 +111,11 @@ public final class CharacterParamOptional<T extends CharSequence> {
 
 		CharacterParamOptional<?> other = (CharacterParamOptional<?>) obj;
 		return Objects.equals(value, other.value);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
 	}
 
 	public boolean isNotEmpty(){
