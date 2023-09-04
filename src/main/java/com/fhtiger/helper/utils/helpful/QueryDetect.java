@@ -6,7 +6,6 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 /**
  * QueryDetect

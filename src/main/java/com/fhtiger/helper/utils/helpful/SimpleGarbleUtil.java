@@ -16,7 +16,7 @@ import org.springframework.web.util.JavaScriptUtils;
  * @author Chivenh
  * @since 2021年05月18日 11:56
  */
-@SuppressWarnings({ "unused","WeakerAccess", "UnnecessaryLocalVariable" })
+@SuppressWarnings({ "unused","WeakerAccess" })
 
 public final class SimpleGarbleUtil {
 
@@ -32,17 +32,13 @@ public final class SimpleGarbleUtil {
 	 * @param max 大值
 	 * @return -
 	 */
-	public static int randomSize(int min,int max){
-		Random random = new Random();
-
+	public static int randomSize(Random random,int min,int max){
 		return random.nextInt(max)%(max-min+1)+min;
 	}
 
-	public static List<Character> getSplitChars(int length){
+	public static List<Character> getSplitChars(Random random,int length){
 
 		List<Character> chars = new ArrayList<>();
-
-		Random random = new Random();
 
 		int charLength = SPLIT_CHARS.length();
 
@@ -55,11 +51,9 @@ public final class SimpleGarbleUtil {
 		return chars;
 	}
 
-	public static List<Integer> getGarbleIndexes(int length){
+	public static List<Integer> getGarbleIndexes(Random random,int length){
 
 		List<String> indexes = new ArrayList<>();
-
-		Random random = new Random();
 
 		int indexLength = length;
 
@@ -69,13 +63,11 @@ public final class SimpleGarbleUtil {
 		}
 
 		/*得到混淆顺序*/
-		ListUtil.sort(indexes,(k)->k.replaceFirst(",\\d+",""));
+		ListUtil.sort(indexes,k->k.replaceFirst(",\\d+",""));
 
 		/*混淆顺序对应实际的顺序*/
-		List<Integer> newIndexes =indexes.stream().map(k->Integer.parseInt(k.replaceFirst("\\d+,",""))).collect(
+		return indexes.stream().map(k->Integer.parseInt(k.replaceFirst("\\d+,",""))).collect(
 				Collectors.toList());
-
-		return newIndexes;
 	}
 
 	public static GarbleContent garbleContent(String content,int splitSize,long timestamp){
@@ -85,9 +77,9 @@ public final class SimpleGarbleUtil {
 
 		int length = contentList.size();
 
-		List<Character> splitChars = getSplitChars(length);
+		List<Character> splitChars = getSplitChars(new Random(), length);
 
-		List<Integer> garbleIndexes = getGarbleIndexes(length);
+		List<Integer> garbleIndexes = getGarbleIndexes(new Random(),length);
 
 		/*混淆文本分隔符*/
 		String splitStr = "---%s---";
@@ -143,23 +135,23 @@ public final class SimpleGarbleUtil {
 		/**
 		 * 混淆后文本
 		 */
-		private String garbleContent;
+		private final String content;
 		/**
 		 * 混淆顺序
 		 */
-		private String garbleIndexes;
+		private final String indexes;
 
-		public GarbleContent(String garbleContent, String garbleIndexes) {
-			this.garbleContent = garbleContent;
-			this.garbleIndexes = garbleIndexes;
+		public GarbleContent(String content, String indexes) {
+			this.content = content;
+			this.indexes = indexes;
 		}
 
-		public String getGarbleContent() {
-			return garbleContent;
+		public String getContent() {
+			return content;
 		}
 
-		public String getGarbleIndexes() {
-			return garbleIndexes;
+		public String getIndexes() {
+			return indexes;
 		}
 	}
 }
