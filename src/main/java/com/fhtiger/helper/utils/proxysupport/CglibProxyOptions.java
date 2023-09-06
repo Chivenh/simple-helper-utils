@@ -1,5 +1,6 @@
 package com.fhtiger.helper.utils.proxysupport;
 
+import com.fhtiger.helper.utils.helpful.SimpleRuntimeException;
 import org.springframework.cglib.proxy.Callback;
 import org.springframework.cglib.proxy.CallbackFilter;
 import org.springframework.cglib.proxy.Enhancer;
@@ -126,6 +127,7 @@ public final class CglibProxyOptions {
 		 * @param callback -
 		 * @return -
 		 */
+		@SuppressWarnings("unused")
 		public Builder addCallback(final Callback callback) {
 			if (this.callbackList == null) {
 				this.callbackList = new ArrayList<>();
@@ -181,24 +183,24 @@ public final class CglibProxyOptions {
 		}
 
 		private void fix() {
-			if (this.callbackList == null || this.callbackList.size() < 1) {
-				throw new RuntimeException("Empty callbackList is not enable to proxy the target!");
+			if (this.callbackList == null || this.callbackList.isEmpty()) {
+				throw new SimpleRuntimeException("Empty callbackList is not enable to proxy the target!");
 			}
 			if(this.callbackList.size()>1 && this.callbackFilter==null){
-				throw new RuntimeException("Multiple callback need the callbackFilter specified!");
+				throw new SimpleRuntimeException("Multiple callback need the callbackFilter specified!");
 			}
 			if (this.arguments != null && this.arguments.length > 0) {
 				int aLength = this.arguments.length;
 				if (this.argumentTypes == null || aLength != this.argumentTypes.length) {
 					Class<?>[] theArgumentTypes = new Class[aLength];
-					Class<?>[] argumentTypes = this.argumentTypes;
-					if (argumentTypes == null) {
-						argumentTypes = new Class[0];
+					Class<?>[] argTypes = this.argumentTypes;
+					if (argTypes == null) {
+						argTypes = new Class[0];
 					}
-					int atLength = argumentTypes.length;
+					int atLength = argTypes.length;
 					for (int i = 0; i < aLength; i++) {
 						if (i < atLength) {
-							theArgumentTypes[i] = argumentTypes[i];
+							theArgumentTypes[i] = argTypes[i];
 						} else {
 							theArgumentTypes[i] = this.arguments[i].getClass();
 						}
