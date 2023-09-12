@@ -24,25 +24,26 @@ public class ImplementAdapter {
 
 	public static  <T> List<Class<T>> getAllImplements(Class<T> interfaceClass){
 		ClassLoader classLoader = interfaceClass.getClassLoader();
-		Field field = null;
+		Field field;
 		try {
 			Class<?> classOfClassLoader = classLoader.getClass();
 			while (ClassLoader.class!=classOfClassLoader) {
 				classOfClassLoader = classOfClassLoader.getSuperclass();
 			}
 			field = ClassLoader.class.getDeclaredField("classes");
-			field.setAccessible(true);
 		} catch (NoSuchFieldException e) {
 			throw new SimpleRuntimeException(
 					"无法获取到当前线程的类加载器的classes域!");
 		}
 
 		try {
+			@SuppressWarnings("unchecked")
 			List<Class<?>> loaders = new ArrayList<>( (Vector<Class<?>>)field.get(classLoader));
 			List<Class<T>> results = new ArrayList<>();
 			for (Class<?> loader : loaders) {
 
 				if(interfaceClass.isAssignableFrom(loader)&&!interfaceClass.equals(loader)&&!Modifier.isAbstract(loader.getModifiers())){
+					//noinspection unchecked
 					results.add((Class<T>) loader);
 				}
 			}
