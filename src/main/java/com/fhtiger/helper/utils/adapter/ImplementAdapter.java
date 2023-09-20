@@ -39,7 +39,7 @@ public class ImplementAdapter {
 		try {
 			@SuppressWarnings("unchecked")
 			List<Class<?>> loaders = new ArrayList<>( (Vector<Class<?>>)field.get(classLoader));
-			List<Class<T>> results = new ArrayList<>();
+			List<Class<T>> results = new ArrayList<>(loaders.size());
 			for (Class<?> loader : loaders) {
 
 				if(interfaceClass.isAssignableFrom(loader)&&!interfaceClass.equals(loader)&&!Modifier.isAbstract(loader.getModifiers())){

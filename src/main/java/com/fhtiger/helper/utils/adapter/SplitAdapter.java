@@ -83,6 +83,7 @@ public enum SplitAdapter {
 		}
 	}, Integer.class::isAssignableFrom);
 
+	static final String NOT_SUPPORT=",不支持此分隔操作!";
 	private final SplitHandler splitHandler;
 
 	private final Predicate<Class<?>> ableSplit;
@@ -106,7 +107,7 @@ public enum SplitAdapter {
 		Class<?> valueClass = value.getClass();
 
 		if (!this.ableSplit.test(valueClass)) {
-			throw new SimpleRuntimeException(valueClass.getName() + ",不支持此分隔操作!");
+			throw new SimpleRuntimeException(valueClass.getName() + NOT_SUPPORT);
 		}
 		return splitBySize((SplitHandler<E>) this.splitHandler, value, size);
 	}
@@ -125,7 +126,7 @@ public enum SplitAdapter {
 		Class<?> valueClass = value.getClass();
 
 		if (!this.ableSplit.test(valueClass)) {
-			throw new SimpleRuntimeException(valueClass.getName() + ",不支持此分隔操作!");
+			throw new SimpleRuntimeException(valueClass.getName() + NOT_SUPPORT);
 		}
 		return splitByRooms((SplitHandler<E>) this.splitHandler, value, roomSize);
 	}
@@ -165,50 +166,49 @@ public enum SplitAdapter {
 	 */
 	private static <E> List<E> splitBySize(final SplitHandler<E> splitHandler, final E value, final int size) {
 
-		if (splitHandler.isNotEmpty(value) && size != 0) {
-
-			int valueLength = splitHandler.valueLength(value);
-
-			/* 分隔大小的绝对值 */
-			int splitSize = Math.abs(size);
-
-			/* 值长度取模余量 */
-			int leaveLength = valueLength % splitSize;
-
-			/* 分隔结果集长度 */
-			int splitLength = valueLength / splitSize + (leaveLength > 0 ? 1 : 0);
-
-			List<E> results = new ArrayList<>(splitLength);
-
-			int i = 0, start;
-
-			/* 向右分隔 */
-			if (size > 0) {
-				while (i < splitLength) {
-					start = i * splitSize;
-					if (i == splitLength - 1) {
-						results.add(splitHandler.subFromTo(value, start, valueLength));
-					} else {
-						results.add(splitHandler.subFromTo(value, start, start + splitSize));
-					}
-					i++;
-				}
-			} else {
-				while (i < splitLength) {
-					if (i == splitLength - 1) {
-						results.add(splitHandler.subFromTo(value, 0, leaveLength));
-					} else {
-						start = leaveLength + (splitLength - i - 2) * splitSize;
-						results.add(splitHandler.subFromTo(value, start, start + splitSize));
-					}
-					i++;
-				}
-			}
-
-			return results;
+		if (!splitHandler.isNotEmpty(value) || size == 0) {
+			return Collections.emptyList();
 		}
 
-		return Collections.emptyList();
+		int valueLength = splitHandler.valueLength(value);
+
+		/* 分隔大小的绝对值 */
+		int splitSize = Math.abs(size);
+
+		/* 值长度取模余量 */
+		int leaveLength = valueLength % splitSize;
+
+		/* 分隔结果集长度 */
+		int splitLength = valueLength / splitSize + (leaveLength > 0 ? 1 : 0);
+
+		List<E> results = new ArrayList<>(splitLength);
+
+		int i = 0, start;
+
+		/* 向右分隔 */
+		if (size > 0) {
+			while (i < splitLength) {
+				start = i * splitSize;
+				if (i == splitLength - 1) {
+					results.add(splitHandler.subFromTo(value, start, valueLength));
+				} else {
+					results.add(splitHandler.subFromTo(value, start, start + splitSize));
+				}
+				i++;
+			}
+		} else {
+			while (i < splitLength) {
+				if (i == splitLength - 1) {
+					results.add(splitHandler.subFromTo(value, 0, leaveLength));
+				} else {
+					start = leaveLength + (splitLength - i - 2) * splitSize;
+					results.add(splitHandler.subFromTo(value, start, start + splitSize));
+				}
+				i++;
+			}
+		}
+
+		return results;
 	}
 
 	/**
@@ -283,7 +283,7 @@ public enum SplitAdapter {
 
 		if (adapter == null) {
 
-			throw new SimpleRuntimeException(valueClass.getName() + ",不支持此分隔操作!");
+			throw new SimpleRuntimeException(valueClass.getName() + NOT_SUPPORT);
 		}
 
 		SplitHandler<E> splitHandler = (SplitHandler<E>) adapter.splitHandler;
@@ -308,7 +308,7 @@ public enum SplitAdapter {
 
 		if (adapter == null) {
 
-			throw new SimpleRuntimeException(valueClass.getName() + ",不支持此分隔操作!");
+			throw new SimpleRuntimeException(valueClass.getName() + NOT_SUPPORT);
 		}
 
 		SplitHandler<E> splitHandler = (SplitHandler<E>) adapter.splitHandler;
