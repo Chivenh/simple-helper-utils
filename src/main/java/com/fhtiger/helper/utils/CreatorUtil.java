@@ -13,8 +13,8 @@ import java.util.function.IntFunction;
  */
 @SuppressWarnings({ "unused", "AlibabaClassNamingShouldBeCamel" })
 
-public final class CUtil {
-	private CUtil() throws IllegalAccessException {
+public final class CreatorUtil {
+	private CreatorUtil() throws IllegalAccessException {
 		throw new IllegalAccessException("此类不能被实例化!");
 	}
 

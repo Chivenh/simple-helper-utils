@@ -15,9 +15,9 @@ import java.util.*;
  */
 @SuppressWarnings({ "unused", "WeakerAccess" })
 
-public final class QUtil {
+public final class QueryUtil {
 
-	private QUtil() throws IllegalAccessException {
+	private QueryUtil() throws IllegalAccessException {
 		throw new IllegalAccessException("The util-class do not need to be instantiated");
 	}
 

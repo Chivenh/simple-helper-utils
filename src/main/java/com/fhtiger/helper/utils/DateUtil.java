@@ -30,9 +30,9 @@ import java.util.regex.Pattern;
  */
 @SuppressWarnings({ "unused" })
 
-public final class DUtil {
+public final class DateUtil {
 
-	private DUtil() throws IllegalAccessException {
+	private DateUtil() throws IllegalAccessException {
 		throw new IllegalAccessException("The util-class do not need to be instantiated");
 	}
 
@@ -713,7 +713,7 @@ public final class DUtil {
 		 * });
 		 */
 		public <R> R use(Supplier<R> doing) {
-			return DUtil.use(this, doing);
+			return DateUtil.use(this, doing);
 		}
 	}
 }

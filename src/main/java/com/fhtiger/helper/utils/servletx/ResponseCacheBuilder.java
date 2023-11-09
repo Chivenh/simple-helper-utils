@@ -1,7 +1,7 @@
 package com.fhtiger.helper.utils.servletx;
 
 
-import com.fhtiger.helper.utils.DUtil;
+import com.fhtiger.helper.utils.DateUtil;
 import com.fhtiger.helper.utils.optional.OptionalConsumer;
 
 import java.time.LocalDateTime;
@@ -26,7 +26,7 @@ public class ResponseCacheBuilder {
 	public static final String ETAG_KEY = "ETag";
 	public static final String EXPIRES_KEY = "Expires";
 	public static final String CACHE_CONTROL_KEY = "Cache-Control";
-	public static final Date IN_VALID_DATE= DUtil.toDate( LocalDateTime.ofEpochSecond(1,1, ZoneOffset.UTC));
+	public static final Date IN_VALID_DATE= DateUtil.toDate( LocalDateTime.ofEpochSecond(1,1, ZoneOffset.UTC));
 
 	private Date lastModified;
 	private String etag;
@@ -172,7 +172,7 @@ public class ResponseCacheBuilder {
 
 			final List<String> cacheControl = new ArrayList<>();
 
-			Date now = DUtil.nowDateTime();
+			Date now = DateUtil.nowDateTime();
 
 			OptionalConsumer.nonNullConsume(this.lastModified, lm -> {
 
