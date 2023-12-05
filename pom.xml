@@ -46,7 +46,7 @@
         <jakarta.validation.version>2.0.2</jakarta.validation.version>
         <aspectjweaver.version>1.9.5</aspectjweaver.version>
         <version.junit5-jupiter>5.9.2</version.junit5-jupiter>
-        <version.springframework>5.2.7.RELEASE</version.springframework>
+        <version.springframework>5.3.31</version.springframework>
         <version.camel-bean-validator>3.7.0</version.camel-bean-validator>
         <jmh.version>1.21</jmh.version>
     </properties>
