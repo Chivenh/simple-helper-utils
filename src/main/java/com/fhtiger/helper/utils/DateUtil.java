@@ -48,18 +48,18 @@ public final class DateUtil {
 
 	/**
 	 * 临时指定引擎进行操作并返回指定类型值
-	 *
-	 * @param engine 引擎{@link Engine}
-	 * @param doing  操作
-	 * @param <R>    返回值
-	 * @return R
-	 * @apiNote DUtil.use(DUtil.Engine.ED, ()->{
+	 * e.g. <br>DUtil.use(DUtil.Engine.ED, ()-&gt;{
 	 * System.out.println(DUtil.getNow(type));
 	 * System.out.println(DUtil.getNowDate());
 	 * System.out.println(DUtil.getNowDate(type));
 	 * <p>
 	 * return null;
 	 * });
+	 *
+	 * @param engine 引擎{@link Engine}
+	 * @param doing  操作
+	 * @param <R>    返回值
+	 * @return R
 	 */
 	public static <R> R use(Engine engine, Supplier<R> doing) {
 		try {
@@ -341,10 +341,10 @@ public final class DateUtil {
 	}
 
 	/**
+	 * 获取当前时间[yyyy-MM-dd]
 	 * @param type {@link DateType}
 	 * @return 日期字符串
 	 * @author Chivenh
-	 * @apiNote 获取当前时间[yyyy-MM-dd]
 	 * @since 2017年4月24日 上午10:27:40
 	 */
 	public static String getNow(DateType type) {
@@ -700,17 +700,16 @@ public final class DateUtil {
 
 		/**
 		 * 临时指定引擎进行操作并返回指定类型值
-		 *
-		 * @param doing 操作
-		 * @param <R>   返回值
-		 * @return R
-		 * @apiNote DUtil.use(DUtil.Engine.ED, ()->{
+		 * e.g. <br>DUtil.use(DUtil.Engine.ED, ()-&gt;{
 		 * System.out.println(DUtil.getNow(type));
 		 * System.out.println(DUtil.getNowDate());
 		 * System.out.println(DUtil.getNowDate(type));
 		 * <p>
 		 * return null;
 		 * });
+		 * @param doing 操作
+		 * @param <R>   返回值
+		 * @return R
 		 */
 		public <R> R use(Supplier<R> doing) {
 			return DateUtil.use(this, doing);
