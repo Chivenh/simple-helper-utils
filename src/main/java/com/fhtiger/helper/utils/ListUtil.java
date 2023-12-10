@@ -1,6 +1,5 @@
 package com.fhtiger.helper.utils;
 
-
 import com.fhtiger.helper.utils.adapter.SplitAdapter;
 
 import java.util.*;
@@ -29,6 +28,7 @@ public final class ListUtil {
 	 *
 	 * @param value 原始字符串
 	 * @param size  分隔大小&lt;&lt;+值从左向右分隔，-值从右向左分隔&gt;&gt;
+	 * @param <E>   元素类型
 	 * @return List&lt;List&lt;E&gt;&gt;
 	 */
 	public static <E> List<List<E>> splitBySize(List<E> value, int size) {
@@ -41,6 +41,7 @@ public final class ListUtil {
 	 *
 	 * @param value    原始数据
 	 * @param roomSize 分隔房间总数&lt;&lt;+值多余数量置于首个房间，-值则多余数量置于尾部房间&gt;&gt;
+	 * @param <E>      元素类型
 	 * @return List&lt;List&lt;E&gt;&gt;
 	 */
 	public static <E> List<List<E>> splitByRooms(List<E> value, int roomSize) {
@@ -53,6 +54,8 @@ public final class ListUtil {
 	 *
 	 * @param value        集合数据
 	 * @param keyExtractor 获取比较值的Function
+	 * @param <E>          元素类型
+	 * @param <U>          比较值类型
 	 */
 	public static <E, U extends Comparable<U>> void sort(List<E> value, Function<E, U> keyExtractor) {
 		value.sort(Comparator.comparing(keyExtractor));
@@ -64,6 +67,8 @@ public final class ListUtil {
 	 * @param value         集合数据
 	 * @param keyExtractor  获取比较值的Function
 	 * @param keyComparator 比较器
+	 * @param <E>           元素类型
+	 * @param <U>           比较值类型
 	 */
 	public static <E, U> void sort(List<E> value, Function<E, U> keyExtractor, Comparator<U> keyComparator) {
 		value.sort(Comparator.comparing(keyExtractor, keyComparator));
@@ -74,6 +79,8 @@ public final class ListUtil {
 	 *
 	 * @param value        集合数据
 	 * @param keyExtractor 分组key提取器
+	 * @param <K>          分组值类型
+	 * @param <E>          元素类型
 	 * @return Map&lt;K,List&lt;E&gt;&gt;
 	 */
 	public static <K, E> Map<K, List<E>> group(List<E> value, Function<E, K> keyExtractor) {
@@ -87,6 +94,9 @@ public final class ListUtil {
 	 * @param keyExtractor 分组key提取器
 	 * @param downstream   a {@code Collector} implementing the downstream reduction
 	 * @return Map&lt;K,List&lt;E&gt;&gt;
+	 * @param <K> 分组值类型
+	 * @param <E> 元素类型
+	 * @param <R> 目标元素类型
 	 */
 	public static <K, E, R> Map<K, List<R>> group(List<E> value, Function<E, K> keyExtractor, Collector<E, ?, List<R>> downstream) {
 		return value.stream().collect(Collectors.groupingBy(keyExtractor, downstream));
