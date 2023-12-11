@@ -111,6 +111,10 @@ public final class ListUtil {
 	 *                     {@code Map} of the desired type
 	 * @param downstream   a {@code Collector} implementing the downstream reduction
 	 * @return Map&lt;K,List&lt;R&gt;&gt;
+	 * @param <K> 分组值类型
+	 * @param <E> 元素类型
+	 * @param <R> 结果值类型
+	 * @param <M> 结果map类型
 	 */
 	public static <K, E, R, M extends Map<K, List<R>>> M group(List<E> value, Function<E, K> keyExtractor, Supplier<M> mapFactory, Collector<E, ?, List<R>> downstream) {
 		return value.stream().collect(Collectors.groupingBy(keyExtractor, mapFactory, downstream));
@@ -121,8 +125,8 @@ public final class ListUtil {
 	 *
 	 * @param list      原始集合
 	 * @param converter 转换器
-	 * @param <E>       E
-	 * @param <R>       R
+	 * @param <E>       E 元素值类型
+	 * @param <R>       R 结果值类型
 	 * @return List&lt;R&gt;
 	 */
 	public static <E, R> List<R> convert(Collection<E> list, Function<E, R> converter) {
