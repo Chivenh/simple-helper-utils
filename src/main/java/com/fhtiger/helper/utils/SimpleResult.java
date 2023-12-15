@@ -6,18 +6,19 @@ package com.fhtiger.helper.utils;
  * 
  * @author Chivenh
  * @since 2020年04月26日 14:46
+ * @param <T> 数据类型
  */
 @SuppressWarnings({ "unused","WeakerAccess" })
 
 public final class SimpleResult<T> {
 
-	private String message;
+	private final String message;
 
-	private boolean success;
+	private final boolean success;
 
-	private String code;
+	private final String code;
 
-	private T data;
+	private final T data;
 
 	private SimpleResult(String message, boolean success,String code, T data) {
 		this.message = message;
