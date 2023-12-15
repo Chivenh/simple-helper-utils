@@ -41,6 +41,7 @@ public final class SpecialUtil {
 
 	/**
 	 * 有值(错误信息)打印方法
+	 * @param v 参数1
 	 */
 	public static void consoleErr(Object v) {
 		if (closed()) {return;}
@@ -49,6 +50,8 @@ public final class SpecialUtil {
 
 	/**
 	 * 多值打印,制表符隔开
+	 * @param v1 参数1
+	 * @param v2 参数2+
 	 */
 	public static void consoleErr(Object v1, Object... v2) {
 		if (closed()) {return;}
@@ -61,6 +64,7 @@ public final class SpecialUtil {
 
 	/**
 	 * 有值打印方法
+	 * @param v 参数
 	 */
 	public static void consoleOut(Object v) {
 		if (closed()) {return;}
@@ -73,6 +77,7 @@ public final class SpecialUtil {
 
 	/**
 	 * 有值打印(collection)方法
+	 * @param v 参数
 	 */
 	public static void consoleOut(Collection<?> v) {
 		if (closed()) {return;}
@@ -91,6 +96,8 @@ public final class SpecialUtil {
 
 	/**
 	 * 多值打印,制表符隔开
+	 * @param v1 参数v1
+	 * @param v2 参数v2
 	 */
 	public static void consoleOut(Object v1, Object... v2) {
 		if (closed()) {return;}
@@ -103,6 +110,7 @@ public final class SpecialUtil {
 
 	/**
 	 * 遍历数组
+	 * @param v 参数
 	 */
 	public static void consoleOut(Object[] v) {
 		if (closed()) {return;}
@@ -116,6 +124,8 @@ public final class SpecialUtil {
 
 	/**
 	 * 遍历数组,以指定字符串分隔
+	 * @param v 参数
+	 * @param r 参数
 	 */
 	public static void consoleOut(Object[] v, String r) {
 		if (closed()) {return;}
@@ -129,6 +139,8 @@ public final class SpecialUtil {
 
 	/**
 	 * 遍历数组,追加数字标记
+	 * @param v 参数
+	 * @param j 参数
 	 */
 	public static void consoleOut(Object[] v, int j) {
 		if (closed()) {return;}
