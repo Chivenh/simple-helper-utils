@@ -190,11 +190,11 @@ public final class SpecialUtil {
 	}
 
 	/**
+	 * 通用toString()方法
 	 * @param obj 对象
 	 * @return String
 	 * @author Chivenh
 	 * @since 2017年4月21日 下午1:11:53
-	 * @apiNote 通用toString()方法.
 	 */
 	@SuppressWarnings({ "rawtypes" })
 	public static String toString(Object obj) {
@@ -259,6 +259,7 @@ public final class SpecialUtil {
 	 *
 	 * @param o 原始值
 	 * @param v 默认值
+	 * @return String
 	 */
 	public static String getStr(Object o, String... v) {
 		return o == null ? (v.length < 1 ? "" : v[0]) : o.toString().trim();
@@ -269,6 +270,7 @@ public final class SpecialUtil {
 	 *
 	 * @param o 原始值
 	 * @param v 默认值
+	 * @return Integer
 	 */
 	public static int getInt(Object o, int... v) {
 		int t;
@@ -285,6 +287,7 @@ public final class SpecialUtil {
 	 * 得到BigDecimal.
 	 *
 	 * @param o 原始值
+	 * @return BigDecimal
 	 */
 	public static BigDecimal getBigDecimal(Object o) {
 		try {
@@ -303,6 +306,7 @@ public final class SpecialUtil {
 	 *
 	 * @param o 原始值
 	 * @param v 默认值
+	 * @return Long
 	 */
 	public static long getLong(Object o, int... v) {
 		long t = 0L;
@@ -320,6 +324,7 @@ public final class SpecialUtil {
 	 *
 	 * @param o 原始值
 	 * @param v 默认值
+	 * @return Double
 	 */
 	public static double getDouble(Object o, double... v) {
 		double t;
@@ -401,6 +406,7 @@ public final class SpecialUtil {
 	 * 简单判断是否为空(空则真|反之假.)
 	 *
 	 * @param o 值
+	 * @return Boolean
 	 */
 	public static boolean isNull(Object o) {
 		if (o == null) {
