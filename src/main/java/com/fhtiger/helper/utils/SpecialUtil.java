@@ -351,7 +351,7 @@ public final class SpecialUtil {
 
 	/**
 	 * 对多个字符串值进行数值求和
-	 * <b>不限整数或浮点数<b/>
+	 * <b>不限整数或浮点数</b>
 	 *
 	 * @param v1 必填参数1
 	 * @param v2 可选参数列表2
@@ -412,7 +412,7 @@ public final class SpecialUtil {
 		if (o == null) {
 			return true;
 		} else {
-			return o instanceof String && "".equals(o.toString().trim());
+			return o instanceof String && o.toString().trim().isEmpty();
 		}
 	}
 	/**
@@ -547,6 +547,7 @@ public final class SpecialUtil {
 	 * 自调用空构造器以前置对象为模板创建新对象
 	 * @param pre 前置对象
 	 * @return 结果对象
+	 * @param <T> 结果类型
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T cloneByProps(T pre) {
@@ -587,6 +588,7 @@ public final class SpecialUtil {
 	 * @return 当前对象
 	 * @author Chivenh
 	 * @since 2020-04-26 15:28
+	 * @param <T> 结果类型
 	 */
 	public static <T> T copyProps(T pre, T cur) {
 		if (pre.getClass() != cur.getClass()) {
@@ -670,6 +672,7 @@ public final class SpecialUtil {
 	 * @since 2017年5月31日 下午3:07:43
 	 * @see .反之Object转Map 有方法:
 	 * @see #objToMap(Object)
+	 * @param <T> 结果类型
 	 */
 	public static <T> T mapToObj(Class<T> type, Map<String, Object> map) {
 		T newObj;
