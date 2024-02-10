@@ -384,6 +384,7 @@ public final class DateUtil {
 	 * 将字符串以指定格式转化为日期(指定国际化)
 	 *
 	 * @param sdf  格式化字符串
+	 * @param locale 国际化标识
 	 * @param date 日期字符串
 	 * @return {@link Date}
 	 * @author Chivenh
