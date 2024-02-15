@@ -1,6 +1,5 @@
 package com.fhtiger.helper.utils;
 
-import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
 /**
@@ -8,6 +7,7 @@ import java.util.function.ToIntFunction;
  * @author Chivenh
  * @since 2020-07-10 10:56
  */
+@SuppressWarnings("unused")
 public class LengthCalc {
 
 	private LengthCalc()  throws IllegalAccessException{
@@ -15,7 +15,7 @@ public class LengthCalc {
 	}
 
 	/**
-	 * 中文匹配 [\u0391-\uFFE5] [\u4e00-\u9fa5]
+	 * 中文匹配 [Α-￥] [一-龥]
 	 */
 	private static final String CHINESE_REGEX = "[\\u0391-\\uFFE5]";
 
