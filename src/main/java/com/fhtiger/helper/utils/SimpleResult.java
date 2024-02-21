@@ -60,6 +60,7 @@ public final class SimpleResult<T> {
 		 * 根据初始化状态得到 {@link SimpleResult} -Builder
 		 * @param success 初始化状态
 		 * @return {@link SimpleResultBuilder}
+		 * @param <T> 数据类型
 		 */
 		public static <T> SimpleResultBuilder<T> of(boolean success) {
 			SimpleResultBuilder<T> builder = new SimpleResultBuilder<>();
