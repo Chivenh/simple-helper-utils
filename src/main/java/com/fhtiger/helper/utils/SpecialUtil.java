@@ -13,10 +13,10 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
+ * 专用调试与小工具类
  * @author Chivenh:
  * @version lfh.1.0
  * @since 完善日期2017-4-13 时间11:23:02
- * @apiNote 专用调试与小工具类
  */
 @SuppressWarnings({ "unused" })
 public final class SpecialUtil {
@@ -342,6 +342,7 @@ public final class SpecialUtil {
 	 *
 	 * @param o 原始值
 	 * @param v 默认值
+	 * @return String
 	 */
 	public static String getOrder(Object o, String... v) {
 		return o == null || o.toString().trim().length() < 1
@@ -509,6 +510,7 @@ public final class SpecialUtil {
 	 * @return 结果对象
 	 * @author Chivenh
 	 * @since 2020-04-26 15:30
+	 * @param <T> 参数类型
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T deepClone(T preObj) {
@@ -664,14 +666,12 @@ public final class SpecialUtil {
 
 	/**
 	 * {@link Map} 转为对应对象
-	 *
+	 * .反之Object转Map 有方法:#objToMap(Object)
 	 * @param type Class
 	 * @param map Map
 	 * @return 结果对象
 	 * @author Chivenh
 	 * @since 2017年5月31日 下午3:07:43
-	 * @see .反之Object转Map 有方法:
-	 * @see #objToMap(Object)
 	 * @param <T> 结果类型
 	 */
 	public static <T> T mapToObj(Class<T> type, Map<String, Object> map) {
