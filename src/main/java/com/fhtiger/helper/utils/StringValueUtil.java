@@ -1,6 +1,5 @@
 package com.fhtiger.helper.utils;
 
-
 import com.fhtiger.helper.utils.adapter.SplitAdapter;
 
 import java.util.*;
@@ -32,18 +31,18 @@ public final class StringValueUtil {
 	 * @return String
 	 */
 	public static String repeat(final CharSequence fragment, final int times) {
-		return repeat(fragment,"",times);
+		return repeat(fragment, "", times);
 	}
 
 	/**
 	 * 将指定字符串片段重复指定次数后拼接返回
 	 *
-	 * @param fragment 字符串片段
+	 * @param fragment  字符串片段
 	 * @param delimiter 指定拼接符号
-	 * @param times    重复次数
+	 * @param times     重复次数
 	 * @return String
 	 */
-	public static String repeat(final CharSequence fragment,final CharSequence delimiter, final int times) {
+	public static String repeat(final CharSequence fragment, final CharSequence delimiter, final int times) {
 		if (SpecialUtil.isEmpty(fragment)) {
 			return "";
 		}
@@ -171,10 +170,10 @@ public final class StringValueUtil {
 
 	/**
 	 * 分隔为Long结果集
+	 * 默认使用`,`分隔
 	 *
 	 * @param value 原始字符串
 	 * @return List&lt;Long&gt;
-	 * @apiNote 默认使用`,`分隔
 	 */
 	public static List<Long> splitToLong(final String value) {
 		return splitToLong(value, ",");
