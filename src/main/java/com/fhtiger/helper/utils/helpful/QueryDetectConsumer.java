@@ -12,7 +12,7 @@ import java.util.function.Supplier;
  *
  * @author Chivenh
  * @apiNote When convert the value to null,The queryDetect will call voidAppend to only append the conditionStr and without param.
- * @created 2021年06月29日 10:22
+ * @since 2021年06月29日 10:22
  */
 @SuppressWarnings({ "unused" })
 
