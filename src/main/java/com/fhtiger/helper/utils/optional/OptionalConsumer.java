@@ -1,6 +1,5 @@
 package com.fhtiger.helper.utils.optional;
 
-
 import com.fhtiger.helper.utils.SpecialUtil;
 
 import java.math.BigDecimal;
@@ -171,11 +170,18 @@ public final class OptionalConsumer {
 	 *
 	 * @param value 值
 	 * @param <T>   -
+	 * @return {@link OptionalValue}
 	 */
 	public static <T extends CharSequence> OptionalValue<T> nonEmptyConsume(T value) {
 		return new OptionalValue<>(value, SpecialUtil.isNotEmpty(value));
 	}
 
+	/**
+	 * @param value 值
+	 * @param <E>   -
+	 * @param <T>   -
+	 * @return {@link OptionalValue}
+	 */
 	public static <E, T extends Collection<E>> OptionalValue<T> nonEmptyConsume(T value) {
 		return new OptionalValue<>(value, value != null && !value.isEmpty());
 	}
@@ -184,6 +190,7 @@ public final class OptionalConsumer {
 	 * 非0值消费
 	 *
 	 * @param value 值
+	 * @return {@link OptionalValue}
 	 */
 	public static OptionalValue<BigDecimal> nonZeroConsume(BigDecimal value) {
 		return new OptionalValue<>(value, value != null && BigDecimal.ZERO.compareTo(value) != 0);
@@ -193,6 +200,7 @@ public final class OptionalConsumer {
 	 * 非0值消费
 	 *
 	 * @param value 值
+	 * @return {@link OptionalValue}
 	 */
 	public static OptionalValue<BigDecimal> gtZeroConsume(BigDecimal value) {
 		return new OptionalValue<>(value, value != null && BigDecimal.ZERO.compareTo(value) < 0);
@@ -202,6 +210,7 @@ public final class OptionalConsumer {
 	 * 非0值消费
 	 *
 	 * @param value 值
+	 * @return {@link OptionalValue}
 	 */
 	public static OptionalValue<BigDecimal> ltZeroConsume(BigDecimal value) {
 		return new OptionalValue<>(value, value != null && BigDecimal.ZERO.compareTo(value) > 0);
@@ -211,6 +220,7 @@ public final class OptionalConsumer {
 	 * {@link Boolean#TRUE}.equals(value)真时调用
 	 *
 	 * @param value Boolean
+	 * @return {@link OptionalValue}
 	 */
 	public static OptionalValue<Boolean> trueConsume(Boolean value) {
 		return new OptionalValue<>(value, Boolean.TRUE.equals(value));
@@ -220,6 +230,7 @@ public final class OptionalConsumer {
 	 * {@link Boolean#TRUE}.equals(value)为非时调用
 	 *
 	 * @param value Boolean
+	 * @return {@link OptionalValue}
 	 */
 	public static OptionalValue<Boolean> nonTrueConsume(Boolean value) {
 		return new OptionalValue<>(value, !Boolean.TRUE.equals(value));
@@ -229,6 +240,7 @@ public final class OptionalConsumer {
 	 * {@link Boolean#FALSE}.equals(value)为真时调用
 	 *
 	 * @param value Boolean
+	 * @return {@link OptionalValue}
 	 */
 	public static OptionalValue<Boolean> falseConsume(Boolean value) {
 		return new OptionalValue<>(value, Boolean.FALSE.equals(value));
