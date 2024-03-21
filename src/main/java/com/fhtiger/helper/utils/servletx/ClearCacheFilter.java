@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 
 /**
  * 清除静态资源中业务模块的缓存,以免开发过程调试麻烦
- * @apiNote
  * <ul>
  *     <li>1.在过滤器参数中使用exurl，使用正则表达式标记使用缓存的文件或目录</li>
  *     <li>2.在前端请求路径中添加cache=true参数，标记此资源请求使用缓存</li>

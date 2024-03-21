@@ -29,7 +29,6 @@ public interface CustomFilter {
 	 * <li>Does not return within a time period defined by the web container
 	 * </ol>
 	 *
-	 * @implSpec
 	 * The default implementation takes no action.
 	 *
 	 * @param filterConfig a <code>FilterConfig</code> object containing the
@@ -96,7 +95,6 @@ public interface CustomFilter {
 	 * threads) and make sure that any persistent state is synchronized
 	 * with the filter's current state in memory.</p>
 	 *
-	 * @implSpec
 	 * The default implementation takes no action.
 	 */
 	default void destroy() {}
