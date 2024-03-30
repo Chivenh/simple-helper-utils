@@ -30,9 +30,9 @@ import java.util.regex.Pattern;
  */
 @SuppressWarnings({ "unused" })
 
-public final class DateUtil {
+public final class TimeUtil {
 
-	private DateUtil() throws IllegalAccessException {
+	private TimeUtil() throws IllegalAccessException {
 		throw new IllegalAccessException("The util-class do not need to be instantiated");
 	}
 
@@ -625,11 +625,11 @@ public final class DateUtil {
 
 	}
 
-	public enum Engine implements DateTransferEngine<Object> {
+	public enum Engine implements TimeTransferEngine<Object> {
 		/**
 		 * 基于1.8新增的{@link DateTimeFormatter}
 		 */
-		ED(new DateTransferEngine<DateTimeFormatter>() {
+		ED(new TimeTransferEngine<DateTimeFormatter>() {
 			@Override
 			public Date parseDate(DateTimeFormatter formatter, String strDate) {
 				TemporalAccessor temp = formatter.parse(strDate);
@@ -656,7 +656,7 @@ public final class DateUtil {
 		/**
 		 * 基于{@link SimpleDateFormat},此实现有线程安全风险，推荐使用{@link #ED}
 		 */
-		ES(new DateTransferEngine<SimpleDateFormat>() {
+		ES(new TimeTransferEngine<SimpleDateFormat>() {
 			@Override
 			public Date parseDate(SimpleDateFormat formatter, String strDate) {
 				try {
@@ -678,10 +678,10 @@ public final class DateUtil {
 				return formatter.format(date);
 			}
 		});
-		final DateTransferEngine<Object> engine;
+		final TimeTransferEngine<Object> engine;
 
-		Engine(DateTransferEngine<?> engine) {
-			this.engine = (DateTransferEngine<Object>) engine;
+		Engine(TimeTransferEngine<?> engine) {
+			this.engine = (TimeTransferEngine<Object>) engine;
 		}
 
 		@Override
@@ -713,7 +713,7 @@ public final class DateUtil {
 		 * @return R
 		 */
 		public <R> R use(Supplier<R> doing) {
-			return DateUtil.use(this, doing);
+			return TimeUtil.use(this, doing);
 		}
 	}
 }
@@ -723,7 +723,7 @@ public final class DateUtil {
  *
  * @param <T> -{@link SimpleDateFormat} or {@link DateTimeFormatter}
  */
-interface DateTransferEngine<T> {
+interface TimeTransferEngine<T> {
 	/**
 	 * 将字符串日期转为{@link Date}
 	 *
