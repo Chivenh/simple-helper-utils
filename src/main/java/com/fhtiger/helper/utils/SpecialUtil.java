@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 /**
  * 专用调试与小工具类
  * @author Chivenh:
- * @version lfh.1.0
+ * @version 1.0
  * @since 完善日期2017-4-13 时间11:23:02
  */
 @SuppressWarnings({ "unused" })
