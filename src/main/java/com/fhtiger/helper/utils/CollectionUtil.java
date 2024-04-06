@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
  */
 @SuppressWarnings({ "unused" })
 
-public final class ListUtil {
+public final class CollectionUtil {
 
-	private ListUtil() throws IllegalAccessException {
+	private CollectionUtil() throws IllegalAccessException {
 		throw new IllegalAccessException("The util-class do not need to be instantiated");
 	}
 
