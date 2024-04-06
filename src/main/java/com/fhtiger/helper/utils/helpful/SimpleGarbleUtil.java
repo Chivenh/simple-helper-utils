@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-import com.fhtiger.helper.utils.ListUtil;
+import com.fhtiger.helper.utils.CollectionUtil;
 import com.fhtiger.helper.utils.StringValueUtil;
 import org.springframework.web.util.JavaScriptUtils;
 
@@ -63,7 +63,7 @@ public final class SimpleGarbleUtil {
 		}
 
 		/*得到混淆顺序*/
-		ListUtil.sort(indexes,k->k.replaceFirst(",\\d+",""));
+		CollectionUtil.sort(indexes,k->k.replaceFirst(",\\d+",""));
 
 		/*混淆顺序对应实际的顺序*/
 		return indexes.stream().map(k->Integer.parseInt(k.replaceFirst("\\d+,",""))).collect(
