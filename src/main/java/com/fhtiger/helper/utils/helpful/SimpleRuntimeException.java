@@ -3,8 +3,8 @@ package com.fhtiger.helper.utils.helpful;
 /**
  * SimpleRuntimeException
  *
- * @author LFH
- * @created 2023年09月01日 15:54
+ * @author Chivenh
+ * @since 2023年09月01日 15:54
  */
 @SuppressWarnings({ "unused" })
 
