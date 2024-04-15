@@ -1,4 +1,4 @@
-package com.fhtiger.helper.utils.servletx;
+package com.fhtiger.helper.utils.web;
 
 
 import com.fhtiger.helper.utils.TimeUtil;

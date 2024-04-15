@@ -1,4 +1,4 @@
-package com.fhtiger.helper.utils.servletx;
+package com.fhtiger.helper.utils.web;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;

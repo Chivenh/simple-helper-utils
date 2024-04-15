@@ -1,4 +1,4 @@
-package com.fhtiger.helper.utils.servletx;
+package com.fhtiger.helper.utils.web;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
