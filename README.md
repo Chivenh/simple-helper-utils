@@ -9,7 +9,7 @@
 ## adapter
 ## optional
 ## proxysupport
-## servletx
+## web
 ## springweb
 ## specialUtil
 ## ... and so on .
