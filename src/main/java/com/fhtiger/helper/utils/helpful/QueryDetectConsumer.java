@@ -9,9 +9,9 @@ import java.util.function.Supplier;
 
 /**
  * QueryDetectConsumer
+ * When convert the value to null,The queryDetect will call voidAppend to only append the conditionStr and without param.
  *
  * @author Chivenh
- * @apiNote When convert the value to null,The queryDetect will call voidAppend to only append the conditionStr and without param.
  * @since 2021年06月29日 10:22
  */
 @SuppressWarnings({ "unused" })
@@ -95,6 +95,7 @@ public final class QueryDetectConsumer<T> {
 	 * 校验通过，消费
 	 *
 	 * @param conditionalStr 条件语句
+	 * @return {@link QueryDetectConsumer}
 	 */
 	public QueryDetectConsumer<T> done(String conditionalStr) {
 
@@ -148,6 +149,7 @@ public final class QueryDetectConsumer<T> {
 	 * 校验通过，消费
 	 *
 	 * @param conditionalStr 条件语句
+	 * @return {@link QueryDetectConsumer}
 	 */
 	public QueryDetectConsumer<T> done(Function<T, String> conditionalStr) {
 		return this.done(() -> conditionalStr.apply(this.value), () -> this.value);
@@ -203,6 +205,7 @@ public final class QueryDetectConsumer<T> {
 	 * 校验未通过，消费
 	 *
 	 * @param conditionalStr 条件语句
+	 * @return {@link QueryDetectConsumer}
 	 */
 	public QueryDetectConsumer<T> skip(String conditionalStr) {
 
@@ -214,6 +217,7 @@ public final class QueryDetectConsumer<T> {
 	 *
 	 * @param conditionalStr 条件语句
 	 * @param reValue        重赋值
+	 * @return {@link QueryDetectConsumer}
 	 */
 	public QueryDetectConsumer<T> skip(String conditionalStr, T reValue) {
 
@@ -233,6 +237,7 @@ public final class QueryDetectConsumer<T> {
 	 *
 	 * @param conditionalStr 条件语句
 	 * @param valueConverter 值转换器
+	 * @return {@link QueryDetectConsumer}
 	 */
 	public QueryDetectConsumer<T> skip(String conditionalStr, Converter<T, T> valueConverter) {
 
@@ -243,6 +248,7 @@ public final class QueryDetectConsumer<T> {
 	 * 校验未通过，消费(无参数conditional)
 	 *
 	 * @param conditionalStr 条件语句
+	 * @return {@link QueryDetectConsumer}
 	 */
 	public QueryDetectConsumer<T> voidSkip(String conditionalStr) {
 
@@ -263,12 +269,16 @@ public final class QueryDetectConsumer<T> {
 	 * @param value 参数值
 	 * @param test  参数校验器
 	 * @param <R>   -
-	 * @return 查询条件组装消费
+	 * @return {@link QueryDetectConsumer} 查询条件组装消费
 	 */
 	public <R> QueryDetectConsumer<R> then(R value, Predicate<R> test) {
 		return this.conditionalDetect.detect(value, test);
 	}
 
+	/**
+	 * ---
+	 * @return {@link QueryDetect}
+	 */
 	public QueryDetect it() {
 		return this.conditionalDetect;
 	}

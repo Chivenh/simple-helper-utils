@@ -28,6 +28,7 @@ public final class SimpleGarbleUtil {
 
 	/**
 	 * 获取两者之间的随机值
+	 * @param random Random
 	 * @param min 小值
 	 * @param max 大值
 	 * @return -
