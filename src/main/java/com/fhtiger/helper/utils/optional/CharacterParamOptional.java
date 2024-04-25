@@ -65,8 +65,7 @@ public final class CharacterParamOptional<T extends CharSequence> {
 	/**
 	 * Return the contained value, if present, otherwise throw an exception
 	 * to be created by the provided supplier.
-	 *
-	 * @apiNote A method reference to the exception constructor with an empty
+	 * A method reference to the exception constructor with an empty
 	 * argument list can be used as the supplier. For example,
 	 * {@code IllegalStateException::new}
 	 *
