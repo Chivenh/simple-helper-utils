@@ -69,7 +69,7 @@ public abstract class AbstractWebContextLoaderListener extends ContextLoaderList
 		final Properties properties = new Properties();
 		try {
 			properties.load(resource.getInputStream());
-			return new PropertiesPropertySource(resource.getFilename(), properties);
+			return new PropertiesPropertySource(Objects.toString( resource.getFilename(),"___"), properties);
 		} catch (IOException ex) {
 			throw new IllegalStateException("load resource exception" + resource, ex);
 		}
@@ -88,7 +88,7 @@ public abstract class AbstractWebContextLoaderListener extends ContextLoaderList
 
 	private void loadEnvs(ConfigurableEnvironment env){
 
-		if(this.envs==null || this.envs.size()<1){
+		if(this.envs==null || this.envs.isEmpty()){
 			return ;
 		}
 
@@ -108,7 +108,7 @@ public abstract class AbstractWebContextLoaderListener extends ContextLoaderList
 			}
 		}
 		/*yaml文件最后加载*/
-		if(yamlResources.size()>0){
+		if(!yamlResources.isEmpty()){
 			env.getPropertySources().addLast(this.loadYaml(yamlResources));
 		}
 	}

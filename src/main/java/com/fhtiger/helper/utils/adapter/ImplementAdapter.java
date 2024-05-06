@@ -1,6 +1,7 @@
 package com.fhtiger.helper.utils.adapter;
 
 import com.fhtiger.helper.utils.helpful.SimpleRuntimeException;
+import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -49,7 +50,7 @@ public class ImplementAdapter {
 			}
 			return results;
 		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+			LogFactory.getLog(ImplementAdapter.class).error("error:",e);
 		}
 
 		return Collections.emptyList();

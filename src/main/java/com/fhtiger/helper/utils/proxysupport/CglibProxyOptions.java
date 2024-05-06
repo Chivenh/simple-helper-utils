@@ -127,7 +127,7 @@ public final class CglibProxyOptions {
 		 * @param callback -
 		 * @return -
 		 */
-		@SuppressWarnings("unused")
+		@SuppressWarnings({ "unused", "UnusedReturnValue" })
 		public Builder addCallback(final Callback callback) {
 			if (this.callbackList == null) {
 				this.callbackList = new ArrayList<>();

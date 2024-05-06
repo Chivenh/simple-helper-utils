@@ -22,7 +22,7 @@ public class ClearCacheFilter implements Filter {
     /**
      * 匹配忽略列表的正则集合
      */
-    private List<Pattern> patterns ;
+    private final List<Pattern> patterns ;
 
     public ClearCacheFilter() {
         this.patterns = new ArrayList<>();
@@ -33,7 +33,7 @@ public class ClearCacheFilter implements Filter {
         /* 忽略的静态资源列表.*/
         String exurl = filterConfig.getInitParameter("exurl");
         String[] curls = new String[] {};
-        if (exurl != null && exurl.trim().length() > 0) {
+        if (exurl != null && !exurl.trim().isEmpty()) {
             curls = exurl.split("\\s*,\\s*");
         }
         for (String ci : curls) {
