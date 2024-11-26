@@ -79,6 +79,8 @@ public final class AssertDetect {
 
 		if(message!=null){
 			mLength=message.length;
+		}else{
+			message=new String[0];
 		}
 
 		int indexMax  = Math.min(oLength,mLength) - 1;
@@ -91,7 +93,16 @@ public final class AssertDetect {
 
 		for (int i = 0; i < oLength; i++) {
 
-			messageFormat=indexMax<0?defaultMessage:indexMax>=i?message[i]:defaultMessage;
+			if (indexMax < 0) {
+				messageFormat= defaultMessage;
+			} else {
+				if (indexMax >= i) {
+					messageFormat = message[i];
+				}
+				else {
+					messageFormat = defaultMessage;
+				}
+			}
 
 			testResult= predicate.test(object[i]);
 
