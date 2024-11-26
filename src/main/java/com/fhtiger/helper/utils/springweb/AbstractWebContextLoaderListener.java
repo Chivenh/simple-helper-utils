@@ -14,7 +14,6 @@ import org.springframework.web.context.ConfigurableWebEnvironment;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.util.*;
@@ -39,12 +38,12 @@ public abstract class AbstractWebContextLoaderListener extends ContextLoaderList
 	 */
 	private Set<String> envs ;
 
-	public AbstractWebContextLoaderListener() {
+	protected AbstractWebContextLoaderListener() {
 		this.yamlMapFactoryBean = new YamlPropertiesFactoryBean();
 		this.initLoad();
 	}
 
-	public AbstractWebContextLoaderListener(WebApplicationContext context) {
+	protected AbstractWebContextLoaderListener(WebApplicationContext context) {
 		super(context);
 		this.yamlMapFactoryBean = new YamlPropertiesFactoryBean();
 		this.initLoad();
@@ -141,7 +140,7 @@ public abstract class AbstractWebContextLoaderListener extends ContextLoaderList
 
 		ConfigurableEnvironment env = wac.getEnvironment();
 		if (env instanceof ConfigurableWebEnvironment) {
-			((ConfigurableWebEnvironment)env).initPropertySources(sc, (ServletConfig)null);
+			((ConfigurableWebEnvironment)env).initPropertySources(sc, null);
 		}
 
 		/* 增加扩展env属性的追加*/
