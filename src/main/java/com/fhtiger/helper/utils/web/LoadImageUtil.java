@@ -3,15 +3,18 @@ package com.fhtiger.helper.utils.web;
 
 import com.fhtiger.helper.utils.SpecialUtil;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.NotNull;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Map;
-import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 /**
  * 加载图片
@@ -22,6 +25,7 @@ import java.util.function.Function;
  */
 @SuppressWarnings({ "unused" })
 public final class LoadImageUtil {
+	private static  final   Logger logger = LoggerFactory.getLogger(LoadImageUtil.class);
 
 	private LoadImageUtil()  throws IllegalAccessException{
 		throw new IllegalAccessException("The util-class do not need to be instantiated");
@@ -37,7 +41,7 @@ public final class LoadImageUtil {
 	 */
 	public static void loadImageByPath(@NotNull HttpServletResponse response,@NotNull String path) {
 		if (response == null || SpecialUtil.isNull(path)) {
-			SpecialUtil.consoleErr("File Not Found!The Path is required!");
+			logger.warn("File Not Found!The Path is required!");
 			return;
 		}
 		try (FileInputStream img = new FileInputStream(new File(path));
@@ -57,7 +61,7 @@ public final class LoadImageUtil {
 			outputStream.flush();
 
 		} catch (IOException e) {
-			SpecialUtil.consoleErr(e.getMessage());
+			logger.warn(e.getMessage());
 		}
 	}
 
@@ -70,7 +74,7 @@ public final class LoadImageUtil {
 	public static void loadImgByFileAttrs(Map<String, String> attrs,@NotNull  HttpServletRequest request,
 			@NotNull HttpServletResponse response) {
 		if (attrs == null || attrs.isEmpty()) {
-			SpecialUtil.consoleErr("File Not Found!");
+			logger.warn("File Not Found!");
 			try {
 				response.getWriter().write("Load image has got a file-not-found error!");
 			} catch (Exception e) {
@@ -84,16 +88,16 @@ public final class LoadImageUtil {
 		String realName = attrs.get(REALNAME);
 		String dlString = SpecialUtil.getStr(attrs.get(DOWNLOAD));
 		try (ServletOutputStream outputStream = response.getOutputStream()) {
-			boolean downLoad = SpecialUtil.isNull(dlString) ? false : Boolean.valueOf(attrs.get(DOWNLOAD));
 			try {
 				img = new FileInputStream(new File(path));
 			} catch (Exception e) {
 				img = new FileInputStream(basePath);
 			}
+			boolean downLoad = !SpecialUtil.isNull(dlString) && Boolean.parseBoolean(attrs.get(DOWNLOAD));
 			response.setContentType("multipart/form-data");
 			if (downLoad) {
 				response.setContentType("application/octet-stream");
-				Function<String, String> nameGenerator = OutputNameGenerator.BROWSER.getGenerator(request);
+				UnaryOperator<String> nameGenerator = OutputNameGenerator.BROWSER.getGenerator(request);
 				response.setHeader("Content-Disposition",
 						"attachment;filename=\"" + nameGenerator.apply(realName) + "." + type + "\"");
 			}
@@ -110,7 +114,7 @@ public final class LoadImageUtil {
 			}
 			outputStream.flush();
 		} catch (Exception e) {
-			SpecialUtil.consoleErr(e.getMessage());
+			logger.warn(e.getMessage());
 		}
 	}
 }

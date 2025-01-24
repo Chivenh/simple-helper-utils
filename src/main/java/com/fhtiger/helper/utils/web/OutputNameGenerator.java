@@ -1,10 +1,11 @@
 package com.fhtiger.helper.utils.web;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 /**
  * 输出名生成器
@@ -51,15 +52,15 @@ public enum OutputNameGenerator {
 	 */
 	NATIVE((arg)-> String::trim);
 
-	public static final Function<String,String> NATIVE_NAME_GENERATOR=NATIVE.getGenerator(null);
+	public static final UnaryOperator<String> NATIVE_NAME_GENERATOR=NATIVE.getGenerator(null);
 
-	private Function<Object,Function<String,String>>  generator;
+	private final Function<Object,UnaryOperator<String>>  generator;
 
-	OutputNameGenerator(Function<Object, Function<String, String>> generator) {
+	OutputNameGenerator(Function<Object, UnaryOperator<String>> generator) {
 		this.generator = generator;
 	}
 
-	public Function<String, String> getGenerator(Object arg){
+	public UnaryOperator<String> getGenerator(Object arg){
 		return this.generator.apply(arg);
 	}
 }
