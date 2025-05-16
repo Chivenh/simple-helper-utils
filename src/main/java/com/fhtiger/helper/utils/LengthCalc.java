@@ -42,7 +42,5 @@ public class LengthCalc {
 		return dataLength + chineseChars;
 	};
 
-	public static final ToIntFunction<String> DOUBLE_CHARS_FUNCTION = data -> {
-		return data.replaceAll(DOUBLE_CHARS_REGEX, "**").length();
-	};
+	public static final ToIntFunction<String> DOUBLE_CHARS_FUNCTION = data -> data.replaceAll(DOUBLE_CHARS_REGEX, "**").length();
 }
