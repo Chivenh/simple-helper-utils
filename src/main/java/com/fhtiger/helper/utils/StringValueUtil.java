@@ -1,6 +1,7 @@
 package com.fhtiger.helper.utils;
 
 import com.fhtiger.helper.utils.adapter.SplitAdapter;
+import org.springframework.util.StringUtils;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -253,5 +254,18 @@ public final class StringValueUtil {
 			return value;
 		}
 		return String.join(EMPTY, StringValueUtil.splitBiTo(value, "(?=[A-Z])", (i, k) -> i > 0 && k.length() > 0 ? "_" + Character.toLowerCase(k.charAt(0)) + k.substring(1) : k));
+	}
+
+	/**
+	 * Trim leading and trailing whitespace from the given String.
+	 * @param str -
+	 * @return -
+	 */
+	public static String trimWhitespace(String str) {
+		if (!StringUtils.hasLength(str)) {
+			return str;
+		}
+
+		return str.strip();
 	}
 }
