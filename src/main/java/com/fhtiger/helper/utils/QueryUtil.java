@@ -43,7 +43,7 @@ public final class QueryUtil {
 	 * @return String
 	 */
 	public static String getOrderStr(String sortColumns, String order) {
-		if (sortColumns != null && sortColumns.length() > 0 && order != null && order.length() > 0) {
+		if (sortColumns != null && !sortColumns.isEmpty() && order != null && !order.isEmpty()) {
 			String[] sorts = sortColumns.split(",");
 			String[] orders = order.split(",");
 			/*多列排序时，未指定order则继承上一列order*/
