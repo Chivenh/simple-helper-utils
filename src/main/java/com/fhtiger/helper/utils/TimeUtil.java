@@ -680,6 +680,7 @@ public final class TimeUtil {
 		});
 		final TimeTransferEngine<Object> engine;
 
+		@SuppressWarnings("unchecked")
 		Engine(TimeTransferEngine<?> engine) {
 			this.engine = (TimeTransferEngine<Object>) engine;
 		}
