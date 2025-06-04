@@ -83,7 +83,7 @@ public enum SplitAdapter {
 		}
 	}, Integer.class::isAssignableFrom);
 
-	static final String NOT_SUPPORT=",不支持此分隔操作!";
+	static final String NOT_SUPPORT = ",不支持此分隔操作!";
 	private final SplitHandler splitHandler;
 
 	private final Predicate<Class<?>> ableSplit;
@@ -183,7 +183,8 @@ public enum SplitAdapter {
 
 		List<E> results = new ArrayList<>(splitLength);
 
-		int i = 0, start;
+		int i = 0;
+		int start;
 
 		/* 向右分隔 */
 		if (size > 0) {
@@ -244,7 +245,10 @@ public enum SplitAdapter {
 
 			List<E> results = new ArrayList<>(allRoomSize);
 
-			int i = 0, start, end, offset = 0;
+			int i = 0;
+			int start;
+			int end;
+			int offset = 0;
 
 			while (i < allRoomSize) {
 				start = i * splitLength + offset;
@@ -286,7 +290,7 @@ public enum SplitAdapter {
 			throw new SimpleRuntimeException(valueClass.getName() + NOT_SUPPORT);
 		}
 
-		SplitHandler<E> splitHandler = (SplitHandler<E>) adapter.splitHandler;
+		SplitHandler<E> splitHandler = adapter.splitHandler;
 
 		return splitBySize(splitHandler, value, size);
 	}
@@ -311,7 +315,7 @@ public enum SplitAdapter {
 			throw new SimpleRuntimeException(valueClass.getName() + NOT_SUPPORT);
 		}
 
-		SplitHandler<E> splitHandler = (SplitHandler<E>) adapter.splitHandler;
+		SplitHandler<E> splitHandler = adapter.splitHandler;
 
 		return splitByRooms(splitHandler, value, roomSize);
 	}
