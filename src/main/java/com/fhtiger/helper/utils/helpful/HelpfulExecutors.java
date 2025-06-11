@@ -28,6 +28,9 @@ public final class HelpfulExecutors {
 	 * @throws InterruptedException -
 	 */
 	public static boolean shutdownExecutor(ExecutorService processExecutor, Duration waitTime) throws InterruptedException {
+		if (processExecutor.isTerminated()) {
+			return true;
+		}
 		processExecutor.shutdown();
 		return processExecutor.awaitTermination(waitTime.toMillis(), TimeUnit.MILLISECONDS);
 	}
