@@ -1,7 +1,7 @@
 package com.fhtiger.helper.utils.helpful;
 
+import com.fhtiger.helper.utils.StringValueUtil;
 import org.springframework.util.Assert;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.function.BooleanSupplier;
@@ -83,26 +83,22 @@ public final class QueryDetect {
 	 * 自动处理成 where 开头语句
 	 */
 	public void endAsWhere() {
-		this.end(() -> {
-			if (this.conditional.length() > 0) {
-				String conditionalStr = this.fix(this.conditional.toString(), AND_PREFIX, WHERE_PREFIX);
-				this.conditional.replace(0, this.conditional.length(), conditionalStr);
-			}
-			return true;
-		});
+		this.end(() -> doEnd(AND_PREFIX, WHERE_PREFIX));
 	}
 
 	/**
 	 * 自动处理成 and 开头语句
 	 */
 	public void endAsAnd() {
-		this.end(() -> {
-			if (this.conditional.length() > 0) {
-				String conditionalStr = this.fix(this.conditional.toString(), WHERE_PREFIX, AND_PREFIX);
-				this.conditional.replace(0, this.conditional.length(), conditionalStr);
-			}
-			return true;
-		});
+		this.end(() -> doEnd(WHERE_PREFIX, AND_PREFIX));
+	}
+
+	private boolean doEnd(String checkPrefix, String replacePrefix) {
+		if (!this.conditional.isEmpty()) {
+			String conditionalStr = this.fix(this.conditional.toString(), checkPrefix, replacePrefix);
+			this.conditional.replace(0, this.conditional.length(), conditionalStr);
+		}
+		return true;
 	}
 
 	String fix(String conditionalStr, String check, String replace) {
@@ -110,8 +106,8 @@ public final class QueryDetect {
 	}
 
 	public static String fixPrefix(String conditionalStr, String check, String replace) {
-		conditionalStr = StringUtils.trimWhitespace(conditionalStr);
-		if(conditionalStr.length()<1){
+		conditionalStr = StringValueUtil.trimWhitespace(conditionalStr);
+		if(conditionalStr.isEmpty()){
 			return conditionalStr;
 		}
 		if (!conditionalStr.startsWith(replace) && !conditionalStr.startsWith(replace.toUpperCase())) {
