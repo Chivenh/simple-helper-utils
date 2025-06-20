@@ -1,13 +1,13 @@
 package com.fhtiger.helper.utils.helpful;
 
+import com.fhtiger.helper.utils.CollectionUtil;
+import com.fhtiger.helper.utils.StringValueUtil;
+import org.springframework.web.util.JavaScriptUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-
-import com.fhtiger.helper.utils.CollectionUtil;
-import com.fhtiger.helper.utils.StringValueUtil;
-import org.springframework.web.util.JavaScriptUtils;
 
 
 /**
@@ -131,28 +131,11 @@ public final class SimpleGarbleUtil {
 
 	/**
 	 * 混淆结果
+	 *
+	 * @param content 混淆后文本
+	 * @param indexes 混淆顺序
 	 */
-	public static class GarbleContent{
-		/**
-		 * 混淆后文本
-		 */
-		private final String content;
-		/**
-		 * 混淆顺序
-		 */
-		private final String indexes;
+		public record GarbleContent(String content, String indexes) {
 
-		public GarbleContent(String content, String indexes) {
-			this.content = content;
-			this.indexes = indexes;
-		}
-
-		public String getContent() {
-			return content;
-		}
-
-		public String getIndexes() {
-			return indexes;
-		}
 	}
 }
