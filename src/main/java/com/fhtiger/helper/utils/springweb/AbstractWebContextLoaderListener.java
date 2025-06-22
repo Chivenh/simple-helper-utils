@@ -125,11 +125,7 @@ public abstract class AbstractWebContextLoaderListener extends ContextLoaderList
 		String configLocationParam;
 		if (ObjectUtils.identityToString(wac).equals(wac.getId())) {
 			configLocationParam = sc.getInitParameter("contextId");
-			if (configLocationParam != null) {
-				wac.setId(configLocationParam);
-			} else {
-				wac.setId(ConfigurableWebApplicationContext.APPLICATION_CONTEXT_ID_PREFIX + ObjectUtils.getDisplayString(sc.getContextPath()));
-			}
+			wac.setId(Objects.requireNonNullElseGet(configLocationParam, () -> ConfigurableWebApplicationContext.APPLICATION_CONTEXT_ID_PREFIX + ObjectUtils.getDisplayString(sc.getContextPath())));
 		}
 
 		wac.setServletContext(sc);

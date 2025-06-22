@@ -15,7 +15,8 @@ import org.springframework.util.MultiValueMap;
 
 public final class HttpRequestGenerator {
 
-	private HttpRequestGenerator() {
+	private HttpRequestGenerator() throws IllegalAccessException{
+		throw new IllegalAccessException("此工具类无需初始化!");
 	}
 
 	public static HttpEntity<MultiValueMap<String, Object>> formPostRequest(MultiValueMap<String, Object> requestData) {
