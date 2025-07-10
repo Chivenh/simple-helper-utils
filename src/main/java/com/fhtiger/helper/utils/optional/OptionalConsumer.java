@@ -71,11 +71,9 @@ public final class OptionalConsumer {
 	 * @param consumer 消费者
 	 */
 	public static void nonZeroConsume(BigDecimal value, Consumer<BigDecimal> consumer) {
-		Optional.ofNullable(value).ifPresent(v -> {
-			if (BigDecimal.ZERO.compareTo(value) != 0) {
-				consumer.accept(v);
-			}
-		});
+		if (value != null && BigDecimal.ZERO.compareTo(value) != 0) {
+			consumer.accept(value);
+		}
 	}
 
 	/**
@@ -85,11 +83,9 @@ public final class OptionalConsumer {
 	 * @param consumer 消费者
 	 */
 	public static void gtZeroConsume(BigDecimal value, Consumer<BigDecimal> consumer) {
-		Optional.ofNullable(value).ifPresent(v -> {
-			if (BigDecimal.ZERO.compareTo(value) < 0) {
-				consumer.accept(v);
-			}
-		});
+		if (value != null && BigDecimal.ZERO.compareTo(value) < 0) {
+			consumer.accept(value);
+		}
 	}
 
 	/**
@@ -99,11 +95,9 @@ public final class OptionalConsumer {
 	 * @param consumer 消费者
 	 */
 	public static void ltZeroConsume(BigDecimal value, Consumer<BigDecimal> consumer) {
-		Optional.ofNullable(value).ifPresent(v -> {
-			if (BigDecimal.ZERO.compareTo(value) > 0) {
-				consumer.accept(v);
-			}
-		});
+		if (value != null && BigDecimal.ZERO.compareTo(value) > 0) {
+			consumer.accept(value);
+		}
 	}
 
 	/**

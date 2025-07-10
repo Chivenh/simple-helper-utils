@@ -104,11 +104,10 @@ public final class CharacterParamOptional<T extends CharSequence> {
 			return true;
 		}
 
-		if (!(obj instanceof CharacterParamOptional)) {
+		if (!(obj instanceof CharacterParamOptional<?> other)) {
 			return false;
 		}
 
-		CharacterParamOptional<?> other = (CharacterParamOptional<?>) obj;
 		return Objects.equals(value, other.value);
 	}
 
