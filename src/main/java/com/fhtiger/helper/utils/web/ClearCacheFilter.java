@@ -34,7 +34,7 @@ public class ClearCacheFilter implements Filter {
         String exurl = filterConfig.getInitParameter("exurl");
         String[] curls = new String[] {};
         if (exurl != null && !exurl.trim().isEmpty()) {
-            curls = exurl.split("\\s*,\\s*");
+            curls = exurl.split("\\s{0,9},\\s{0,9}");
         }
         for (String ci : curls) {
             if (!ci.startsWith("/")) {
@@ -52,10 +52,7 @@ public class ClearCacheFilter implements Filter {
         boolean cache = Boolean.parseBoolean(httpRequest.getParameter("cache"));
         if(!cache){
             /*排队允许缓存的请求路径*/
-            cache = this.patterns.stream().anyMatch(i -> {
-                boolean bi = i.matcher(url).matches();
-                return bi;
-            });
+            cache = this.patterns.stream().anyMatch(i -> i.matcher(url).matches());
         }
         if (cache) {
             filterChain.doFilter(request, response);
