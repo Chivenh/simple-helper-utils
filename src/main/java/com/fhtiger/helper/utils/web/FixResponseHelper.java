@@ -43,27 +43,29 @@ public final class FixResponseHelper {
 
 		Map<String,Object> headerMap = cacheBuilder.build().getHeaderMap();
 
-		headerMap.forEach((k,v)->{
-			if(v instanceof Date){
-				httpResponse.setDateHeader(k,((Date)v).getTime());
-			}else if(ResponseCacheBuilder.CACHE_CONTROL_KEY.equals(k)){
+		for (Map.Entry<String, Object> entry : headerMap.entrySet()) {
+			String k = entry.getKey();
+			Object v = entry.getValue();
+			if (v instanceof Date) {
+				httpResponse.setDateHeader(k, ((Date) v).getTime());
+			} else if (ResponseCacheBuilder.CACHE_CONTROL_KEY.equals(k)) {
 				@SuppressWarnings("unchecked")
-				List<String> cacheControl = (List<String>)v;
+				List<String> cacheControl = (List<String>) v;
 
-				boolean setted=false;
+				boolean setted = false;
 
 				for (String cv : cacheControl) {
-					if(!setted){
-						setted=true;
-						httpResponse.setHeader(ResponseCacheBuilder.CACHE_CONTROL_KEY,cv);
-					}else{
-						httpResponse.addHeader(ResponseCacheBuilder.CACHE_CONTROL_KEY,cv);
+					if (!setted) {
+						setted = true;
+						httpResponse.setHeader(ResponseCacheBuilder.CACHE_CONTROL_KEY, cv);
+					} else {
+						httpResponse.addHeader(ResponseCacheBuilder.CACHE_CONTROL_KEY, cv);
 					}
 				}
-			}else{
-				httpResponse.setHeader(k,v.toString());
+			} else {
+				httpResponse.setHeader(k, v.toString());
 			}
-		});
+		}
 	}
 
 }
