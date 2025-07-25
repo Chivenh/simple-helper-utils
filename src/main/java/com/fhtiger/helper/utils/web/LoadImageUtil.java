@@ -1,8 +1,6 @@
 package com.fhtiger.helper.utils.web;
 
-
 import com.fhtiger.helper.utils.SpecialUtil;
-
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
 import java.util.function.UnaryOperator;
@@ -81,18 +80,12 @@ public final class LoadImageUtil {
 				/**/}
 			return;
 		}
-		FileInputStream img;
 		String path = attrs.get(PATH);
 		String basePath = attrs.get(BASEPATH);
 		String type = attrs.get(TYPE);
 		String realName = attrs.get(REALNAME);
 		String dlString = SpecialUtil.getStr(attrs.get(DOWNLOAD));
-		try (ServletOutputStream outputStream = response.getOutputStream()) {
-			try {
-				img = new FileInputStream(new File(path));
-			} catch (Exception e) {
-				img = new FileInputStream(basePath);
-			}
+		try (ServletOutputStream outputStream = response.getOutputStream();FileInputStream img = newImageInputStream(path, basePath);) {
 			boolean downLoad = !SpecialUtil.isNull(dlString) && Boolean.parseBoolean(attrs.get(DOWNLOAD));
 			response.setContentType("multipart/form-data");
 			if (downLoad) {
@@ -116,5 +109,15 @@ public final class LoadImageUtil {
 		} catch (Exception e) {
 			logger.warn(e.getMessage());
 		}
+	}
+
+	private static FileInputStream newImageInputStream(String path, String basePath) throws FileNotFoundException {
+		FileInputStream img;
+		try {
+			img = new FileInputStream(path);
+		} catch (Exception e) {
+			img = new FileInputStream(basePath);
+		}
+		return img;
 	}
 }
