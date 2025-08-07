@@ -83,69 +83,68 @@ public class ResponseCacheBuilder {
 		return this;
 	}
 
-	public ResponseCache build() {
-		return new ResponseCache(this.lastModified, this.etag, this.expires, this.maxAgeSeconds,
-				this.sMaxAgeSeconds, this.noCache, this.noStore, this.signPublic, this.signPrivate);
+	ResponseCache build() {
+		return new ResponseCache(this.lastModified, this.etag, this.expires, this.maxAgeSeconds, this.sMaxAgeSeconds, this.noCache, this.noStore, this.signPublic, this.signPrivate);
 	}
 
 	public static ResponseCacheBuilder create() {
 		return new ResponseCacheBuilder();
 	}
 
-	class ResponseCache {
+	static class ResponseCache {
 
 		/**
 		 * @see #LAST_MODIFIED_KEY
 		 */
-		private Date lastModified;
+		private final Date lastModified;
 
 		/**
 		 * @see #ETAG_KEY
 		 */
-		private String etag;
+		private final String etag;
 
 		/**
 		 * @see #EXPIRES_KEY
 		 */
-		private Date expires;
+		private final Date expires;
 
 		/**
 		 * max-age=秒
 		 *
 		 * @see #CACHE_CONTROL_KEY
 		 */
-		private Long maxAgeSeconds;
+		private final Long maxAgeSeconds;
 
 		/**
 		 * s-maxage=秒
 		 *
 		 * @see #CACHE_CONTROL_KEY
 		 */
-		private Long sMaxAgeSeconds;
+		private final Long sMaxAgeSeconds;
 		/**
 		 * no-cache
 		 *
 		 * @see #CACHE_CONTROL_KEY
 		 */
-		private boolean noCache;
+		private final boolean noCache;
 		/**
 		 * no-store
 		 *
 		 * @see #CACHE_CONTROL_KEY
 		 */
-		private boolean noStore;
+		private final boolean noStore;
 		/**
 		 * public
 		 *
 		 * @see #CACHE_CONTROL_KEY
 		 */
-		private boolean signPublic;
+		private final boolean signPublic;
 		/**
 		 * private
 		 *
 		 * @see #CACHE_CONTROL_KEY
 		 */
-		private boolean signPrivate;
+		private final boolean signPrivate;
 
 		private Map<String, Object> headerMap;
 
@@ -221,7 +220,7 @@ public class ResponseCacheBuilder {
 				cacheControl.add("private");
 			}
 
-			if (cacheControl.size() > 0) {
+			if (!cacheControl.isEmpty()) {
 				this.headerMap.put(CACHE_CONTROL_KEY, cacheControl);
 			}
 
