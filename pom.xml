@@ -41,6 +41,7 @@
         <jdk.version>17</jdk.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${jdk.version}</maven.compiler.target>
+		<compile.show.waring>true</compile.show.waring>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.jakarta.servlet>6.0.0</version.jakarta.servlet>
         <version.commons-net>3.11.1</version.commons-net>
@@ -179,7 +180,7 @@
                         <configuration>
                             <encoding>${project.build.sourceEncoding}</encoding>
                             <release>${jdk.version}</release>
-                            <showWarnings>true</showWarnings>
+                            <showWarnings>${compile.show.waring}</showWarnings>
                         </configuration>
                     </plugin>
                 </plugins>
