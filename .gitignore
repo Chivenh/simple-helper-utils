@@ -8,5 +8,7 @@ overlays/
 **/use.bat
 src/test/
 src/main/generated-sources/
+.idea/
+.project/
 /bin/
 *.factorypath
