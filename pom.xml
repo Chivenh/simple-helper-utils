@@ -47,7 +47,7 @@
         <jakarta.validation.version>3.1.0</jakarta.validation.version>
         <aspectjweaver.version>1.9.22</aspectjweaver.version>
         <version.junit5-jupiter>5.11.3</version.junit5-jupiter>
-        <version.springframework>6.2.0</version.springframework>
+        <version.springframework>6.2.8</version.springframework>
         <version.camel-bean-validator>4.8.1</version.camel-bean-validator>
         <jmh.version>1.37</jmh.version>
         <sfl4j-api.version>2.0.16</sfl4j-api.version>
