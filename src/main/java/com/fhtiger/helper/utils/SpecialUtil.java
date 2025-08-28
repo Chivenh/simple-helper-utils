@@ -1,5 +1,8 @@
 package com.fhtiger.helper.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -19,6 +22,8 @@ import java.util.regex.Pattern;
  */
 @SuppressWarnings({ "unused" })
 public final class SpecialUtil {
+
+	private static final Logger logger = LoggerFactory.getLogger(SpecialUtil.class);
 
 	private SpecialUtil()  throws IllegalAccessException{
 		throw new IllegalAccessException("The util-class do not need to be instantiated");
@@ -114,7 +119,7 @@ public final class SpecialUtil {
 							r.append(toString(val));
 						}
 					} catch (Exception e) {
-						e.printStackTrace();
+						logger.error("TimeUtil error: ",e);
 					}
 				}
 			}
@@ -269,7 +274,7 @@ public final class SpecialUtil {
 				s = (int) ys;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("TimeUtil error: ",e);
 		}
 		return s;
 	}
@@ -401,7 +406,7 @@ public final class SpecialUtil {
 			streams[3]=ois;
 			nowObj = ois.readObject();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("TimeUtil error: ",e);
 		}finally {
 			try {
 				for (Closeable stream : streams) {
@@ -410,7 +415,7 @@ public final class SpecialUtil {
 					}
 				}
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("TimeUtil error: ",e);
 			}
 		}
 		return (T)nowObj;

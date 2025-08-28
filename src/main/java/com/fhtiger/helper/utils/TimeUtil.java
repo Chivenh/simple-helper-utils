@@ -2,6 +2,8 @@ package com.fhtiger.helper.utils;
 
 
 import com.fhtiger.helper.utils.helpful.AssertDetect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Time;
 import java.text.ParseException;
@@ -31,6 +33,8 @@ import java.util.regex.Pattern;
 @SuppressWarnings({ "unused" })
 
 public final class TimeUtil {
+
+	private static final Logger logger = LoggerFactory.getLogger(TimeUtil.class);
 
 	private TimeUtil() throws IllegalAccessException {
 		throw new IllegalAccessException("The util-class do not need to be instantiated");
@@ -362,7 +366,7 @@ public final class TimeUtil {
 			Object formatter = createFormatter(type.value, type.locale);
 			now = parseDate(formatter, ENGINE_LOCAL.get().formatDate(formatter, new Date()));
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("TimeUtil error: ",e);
 		}
 		return now;
 	}
@@ -662,7 +666,7 @@ public final class TimeUtil {
 				try {
 					return formatter.parse(strDate);
 				} catch (ParseException e) {
-					e.printStackTrace();
+					logger.error("TimeUtil error: ",e);
 					return null;
 				}
 			}

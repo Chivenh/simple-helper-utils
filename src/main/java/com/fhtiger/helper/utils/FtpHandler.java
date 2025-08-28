@@ -2,6 +2,8 @@ package com.fhtiger.helper.utils;
 
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +16,8 @@ import java.io.InputStream;
  * */
 @SuppressWarnings({"unused"})
 public final class FtpHandler {
+
+	private static final Logger logger = LoggerFactory.getLogger(FtpHandler.class);
 
 	private final String url;
 
@@ -68,19 +72,19 @@ public final class FtpHandler {
 			try {
 				//关闭输入流
 				input.close();
-			} catch (IOException e1) { e1.printStackTrace(); }
+			} catch (IOException e1) { logger.error("TimeUtil error: ",e1); }
 
 			try {
 				//退出ftp
 				if(ftp!=null){
 					ftp.logout();
 				}
-			} catch (IOException e) { e.printStackTrace(); }
+			} catch (IOException e) { logger.error("TimeUtil error: ",e); }
 
 			if(ftp!=null&&ftp.isConnected()){
 				try{
 					ftp.disconnect();
-				}catch(IOException ioe){ ioe.printStackTrace(); }
+				}catch(IOException ioe){ logger.error("TimeUtil error: ",ioe); }
 			}
 		}
 
