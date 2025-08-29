@@ -151,7 +151,7 @@ public final class SpecialUtil {
 	public static int getInt(Object o, int... v) {
 		int t;
 		try {
-			o = o == null || o.toString().trim().length() < 1 ? (v.length < 1 ? 0 : v[0]) : o.toString().trim();
+			o = o == null || o.toString().trim().isEmpty() ? (v.length < 1 ? 0 : v[0]) : o.toString().trim();
 			t = Integer.parseInt(o.toString());
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage());
@@ -167,7 +167,7 @@ public final class SpecialUtil {
 	 */
 	public static BigDecimal getBigDecimal(Object o) {
 		try {
-			if (o == null || o.toString().trim().length() < 1) {
+			if (o == null || o.toString().trim().isEmpty()) {
 				return null;
 			} else {
 				return new BigDecimal(getStr(o));
@@ -187,7 +187,7 @@ public final class SpecialUtil {
 	public static long getLong(Object o, int... v) {
 		long t = 0L;
 		try {
-			o = o == null || o.toString().trim().length() < 1 ? (v.length < 1 ? 0 : v[0]) : o.toString().trim();
+			o = o == null || o.toString().trim().isEmpty() ? (v.length < 1 ? 0 : v[0]) : o.toString().trim();
 			t = Long.parseLong(o.toString());
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage());
@@ -205,7 +205,7 @@ public final class SpecialUtil {
 	public static double getDouble(Object o, double... v) {
 		double t;
 		try {
-			o = o == null || o.toString().trim().length() < 1 ? (v.length < 1 ? 0.0 : v[0]) : o.toString().trim();
+			o = o == null || o.toString().trim().isEmpty() ? (v.length < 1 ? 0.0 : v[0]) : o.toString().trim();
 			t = Double.parseDouble(o.toString());
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage());
@@ -221,7 +221,7 @@ public final class SpecialUtil {
 	 * @return String
 	 */
 	public static String getOrder(Object o, String... v) {
-		return o == null || o.toString().trim().length() < 1
+		return o == null || o.toString().trim().isEmpty()
 				? (v.length < 1 ? "ASC" : (v[0].length() < 3 ? "ASC" : ("asc,desc".contains(v[0])) ? v[0] : "ASC"))
 				: ("asc,desc".contains(o.toString().trim()) ? o.toString().trim() : "ASC");
 	}
@@ -239,7 +239,7 @@ public final class SpecialUtil {
 	public Object getSum(String v1, String... v2) {
 		String a1 = v1;
 		String[] a2={};
-		a1 = a1 == null || "".equals(a1) || "null".equalsIgnoreCase(a1) ? "0" : a1.trim();
+		a1 = a1 == null || a1.isEmpty() || "null".equalsIgnoreCase(a1) ? "0" : a1.trim();
 		if (v2 != null && v2.length > 0) {
 			a2 = v2.clone();
 			int a2Length = a2.length;
@@ -267,11 +267,11 @@ public final class SpecialUtil {
 			xs = x1 + x2;
 			ys = y1 + y2;
 			if (xs > 0 && ys > 0) {
-				s = (double) (xs + ys);
+				s = (xs + ys);
 			} else if (xs > 0 && ys == 0) {
-				s = (double) xs;
+				s =  xs;
 			} else {
-				s = (int) ys;
+				s =  ys;
 			}
 		} catch (Exception e) {
 			logger.error("TimeUtil error: ",e);
@@ -311,7 +311,7 @@ public final class SpecialUtil {
 	 * @return <code>true</code> if the String is empty or null
 	 */
 	public static boolean isEmpty(CharSequence str) {
-		return str == null || str.length() == 0;
+		return str == null || str.isEmpty();
 	}
 
 	/**
@@ -432,7 +432,7 @@ public final class SpecialUtil {
 		Class<?> type = pre.getClass();
 		Object cur;
 		try {
-			cur = type.newInstance();
+			cur = type.getDeclaredConstructor().newInstance();
 			BeanInfo beanInfo = Introspector.getBeanInfo(type);
 			/*获取属性数组*/
 			PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
@@ -526,11 +526,7 @@ public final class SpecialUtil {
 					/*获取属性值*/
 					Object o = method.invoke(obj);
 					/*填充进map*/
-					if (o != null) {
-						map.put(propertyName, o);
-					} else {
-						map.put(propertyName, null);
-					}
+					map.put(propertyName, o);
 				}
 			}
 		} catch (Exception e) {
@@ -553,7 +549,7 @@ public final class SpecialUtil {
 	public static <T> T mapToObj(Class<T> type, Map<String, Object> map) {
 		T newObj;
 		try {
-			newObj = type.newInstance();
+			newObj = type.getDeclaredConstructor().newInstance();
 			BeanInfo beanInfo = Introspector.getBeanInfo(type);
 			/*获取属性数组*/
 			PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();

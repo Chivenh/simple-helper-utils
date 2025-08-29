@@ -43,7 +43,7 @@ public final class TimeUtil {
 	/**
 	 * 线程级缓存引擎
 	 */
-	private static final InheritableThreadLocal<Engine> ENGINE_LOCAL = new InheritableThreadLocal<Engine>() {
+	private static final InheritableThreadLocal<Engine> ENGINE_LOCAL = new InheritableThreadLocal<>() {
 		@Override
 		protected Engine initialValue() {
 			return Engine.ES;
