@@ -7,12 +7,12 @@ import java.util.function.IntFunction;
 /**
  * CUtil
  * {@link java.util.Collection}容器的便捷创建工厂类
- *
+ * @deprecated will instead of {@link HashMap#newHashMap}
  * @author Chivenh
  * @since 2023年05月19日 16:55
  */
 @SuppressWarnings({ "unused", "AlibabaClassNamingShouldBeCamel" })
-
+@Deprecated(forRemoval = true,since = "jdk21")
 public final class CreatorUtil {
 	private CreatorUtil() throws IllegalAccessException {
 		throw new IllegalAccessException("此类不能被实例化!");
