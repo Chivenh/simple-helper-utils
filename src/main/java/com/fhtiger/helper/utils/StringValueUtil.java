@@ -211,10 +211,10 @@ public final class StringValueUtil {
 	 * @return 驼峰字符串
 	 */
 	public static String hump(final String value) {
-		if (Objects.isNull(value) || value.length() < 1) {
+		if (Objects.isNull(value) || value.isEmpty()) {
 			return value;
 		}
-		return String.join(EMPTY, StringValueUtil.splitTo(value, "_(?<=\\S)", k -> k.length() > 0 ? Character.toUpperCase(k.charAt(0)) + k.substring(1) : k));
+		return String.join(EMPTY, StringValueUtil.splitTo(value, "_(?<=\\S)", k -> !k.isEmpty() ? Character.toUpperCase(k.charAt(0)) + k.substring(1) : k));
 	}
 
 	/**
@@ -224,10 +224,10 @@ public final class StringValueUtil {
 	 * @return 驼峰字符串
 	 */
 	public static String humpNonFirst(final String value) {
-		if (Objects.isNull(value) || value.length() < 1) {
+		if (Objects.isNull(value) || value.isEmpty()) {
 			return value;
 		}
-		return String.join(EMPTY, StringValueUtil.splitBiTo(value, "_(?<=\\S)", (i, k) -> i > 0 && k.length() > 0 ? Character.toUpperCase(k.charAt(0)) + k.substring(1) : k));
+		return String.join(EMPTY, StringValueUtil.splitBiTo(value, "_(?<=\\S)", (i, k) -> i > 0 && !k.isEmpty() ? Character.toUpperCase(k.charAt(0)) + k.substring(1) : k));
 	}
 
 	/**
@@ -237,10 +237,10 @@ public final class StringValueUtil {
 	 * @return 下划线字符串
 	 */
 	public static String underline(final String value) {
-		if (Objects.isNull(value) || value.length() < 1) {
+		if (Objects.isNull(value) || value.isEmpty()) {
 			return value;
 		}
-		return String.join(EMPTY, StringValueUtil.splitBiTo(value, "(?=[A-Z])", (i, k) -> k.length() > 0 ? (i > 0 ? "_" : "") + Character.toLowerCase(k.charAt(0)) + k.substring(1) : k));
+		return String.join(EMPTY, StringValueUtil.splitBiTo(value, "(?=[A-Z])", (i, k) -> !k.isEmpty() ? (i > 0 ? "_" : "") + Character.toLowerCase(k.charAt(0)) + k.substring(1) : k));
 	}
 
 	/**
@@ -250,10 +250,10 @@ public final class StringValueUtil {
 	 * @return 下划线字符串
 	 */
 	public static String underlineNonFirst(final String value) {
-		if (Objects.isNull(value) || value.length() < 1) {
+		if (Objects.isNull(value) || value.isEmpty()) {
 			return value;
 		}
-		return String.join(EMPTY, StringValueUtil.splitBiTo(value, "(?=[A-Z])", (i, k) -> i > 0 && k.length() > 0 ? "_" + Character.toLowerCase(k.charAt(0)) + k.substring(1) : k));
+		return String.join(EMPTY, StringValueUtil.splitBiTo(value, "(?=[A-Z])", (i, k) -> i > 0 && !k.isEmpty() ? "_" + Character.toLowerCase(k.charAt(0)) + k.substring(1) : k));
 	}
 
 	/**

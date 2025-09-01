@@ -27,7 +27,7 @@ public final class CreatorUtil {
 	 * @return Map
 	 */
 	public static <K, V> Map<K, V> newMap(int size) {
-		return newMap(size, HashMap::new);
+		return HashMap.newHashMap(size);
 	}
 
 	/**

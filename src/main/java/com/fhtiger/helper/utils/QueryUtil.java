@@ -157,7 +157,7 @@ public final class QueryUtil {
 	public static List<Integer> splitTotal(int total, int pageSize) {
 		List<Integer> split = SplitAdapter.autoSplitBySize(total, pageSize);
 
-		split.add(0, 0);
+		split.addFirst(0);
 
 		return split;
 	}
