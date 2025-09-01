@@ -183,9 +183,7 @@ public class ResponseCacheBuilder {
 				this.headerMap.put(LAST_MODIFIED_KEY, lm);
 			});
 
-			OptionalConsumer.nonEmptyConsume(this.etag, et -> {
-				this.headerMap.put(ETAG_KEY, String.format("W/\"%s\"", et));
-			});
+			OptionalConsumer.nonEmptyConsume(this.etag, et -> this.headerMap.put(ETAG_KEY, String.format("W/\"%s\"", et)));
 
 			OptionalConsumer.nonNullConsume(this.expires, ex -> {
 				if(ex.before(now)){
@@ -196,13 +194,9 @@ public class ResponseCacheBuilder {
 				this.headerMap.put(EXPIRES_KEY, ex);
 			});
 
-			OptionalConsumer.nonNullConsume(this.maxAgeSeconds, maxAge -> {
-				cacheControl.add("max-age=" + maxAge);
-			});
+			OptionalConsumer.nonNullConsume(this.maxAgeSeconds, maxAge -> cacheControl.add("max-age=" + maxAge));
 
-			OptionalConsumer.nonNullConsume(this.sMaxAgeSeconds, maxAge -> {
-				cacheControl.add("s-maxage=" + maxAge);
-			});
+			OptionalConsumer.nonNullConsume(this.sMaxAgeSeconds, maxAge -> cacheControl.add("s-maxage=" + maxAge));
 
 			if (this.noCache) {
 				cacheControl.add("no-cache");

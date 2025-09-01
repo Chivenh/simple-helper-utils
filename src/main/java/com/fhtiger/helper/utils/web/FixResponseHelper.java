@@ -52,11 +52,11 @@ public final class FixResponseHelper {
 				@SuppressWarnings("unchecked")
 				List<String> cacheControl = (List<String>) v;
 
-				boolean setted = false;
+				boolean hadSet = false;
 
 				for (String cv : cacheControl) {
-					if (!setted) {
-						setted = true;
+					if (!hadSet) {
+						hadSet = true;
 						httpResponse.setHeader(ResponseCacheBuilder.CACHE_CONTROL_KEY, cv);
 					} else {
 						httpResponse.addHeader(ResponseCacheBuilder.CACHE_CONTROL_KEY, cv);

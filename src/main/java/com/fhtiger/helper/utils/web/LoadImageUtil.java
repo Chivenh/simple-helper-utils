@@ -8,7 +8,6 @@ import jakarta.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -43,7 +42,7 @@ public final class LoadImageUtil {
 			logger.warn("File Not Found!The Path is required!");
 			return;
 		}
-		try (FileInputStream img = new FileInputStream(new File(path));
+		try (FileInputStream img = new FileInputStream(path);
 				ServletOutputStream outputStream = response.getOutputStream()) {
 			response.setContentType("multipart/form-data");
 			/*
@@ -67,7 +66,7 @@ public final class LoadImageUtil {
 	private static final String PATH = "path";
 	private static final String BASEPATH = "basePath";
 	private static final String TYPE = "type";
-	private static final String REALNAME = "realName";
+	private static final String REAL_NAME = "realName";
 	private static final String DOWNLOAD = "download";
 
 	public static void loadImgByFileAttrs(Map<String, String> attrs,@NotNull  HttpServletRequest request,
@@ -83,9 +82,9 @@ public final class LoadImageUtil {
 		String path = attrs.get(PATH);
 		String basePath = attrs.get(BASEPATH);
 		String type = attrs.get(TYPE);
-		String realName = attrs.get(REALNAME);
+		String realName = attrs.get(REAL_NAME);
 		String dlString = SpecialUtil.getStr(attrs.get(DOWNLOAD));
-		try (ServletOutputStream outputStream = response.getOutputStream();FileInputStream img = newImageInputStream(path, basePath);) {
+		try (ServletOutputStream outputStream = response.getOutputStream();FileInputStream img = newImageInputStream(path, basePath)) {
 			boolean downLoad = !SpecialUtil.isNull(dlString) && Boolean.parseBoolean(attrs.get(DOWNLOAD));
 			response.setContentType("multipart/form-data");
 			if (downLoad) {

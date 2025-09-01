@@ -34,10 +34,10 @@ public enum OutputNameGenerator {
 
 		return (name) -> {
 			String finalFileName = name;
-			final String browserTagiE = "MSIE", browserTagMoz = "Mozilla";
+			final String browserTagIE = "MSIE", browserTagMoz = "Mozilla";
 
 			try {
-				if (userAgent.contains(browserTagiE)) {
+				if (userAgent.contains(browserTagIE)) {
 					/*IE浏览器*/
 					finalFileName = URLEncoder.encode(name, StandardCharsets.UTF_8.displayName());
 				} else if (userAgent.contains(browserTagMoz)) {
